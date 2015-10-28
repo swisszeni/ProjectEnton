@@ -8,6 +8,32 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="MenuSplitView" DisplayMode="Overlay" IsPaneOpen="True">
+            <SplitView.Pane>
+                <StackPanel Margin="8">
+                    <RadioButton Tag="MyMeds">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x1f48a;" FontFamily="Segoe UI Symbol"/>
+                            <TextBlock Text="Meine Medikamente" Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Tag="MedicationSchedule">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock Text="Medikationsplan" Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ContentMenuButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent" HorizontalAlignment="Left" Visibility="Collapsed" />
+                        <TextBlock Text="SplitView UWP" Margin="16,8,0,0" />
+                    </StackPanel>
+                </StackPanel>
+            </SplitView.Content>
+        </SplitView>
 
     </Grid>
 </Page>
