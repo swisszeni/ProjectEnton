@@ -31,5 +31,10 @@ namespace ProjectEnton
         {
 
         }
+        
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SettingPage));
+        }
     }
 }

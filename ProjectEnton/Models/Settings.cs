@@ -8,15 +8,16 @@ using Windows.UI;
 namespace ProjectEnton.Models
 {
     /// <summary>
-    /// This static class provides the default values for the taking day times, the theme color and if the Microsoft Band 2 is in use or not
+    /// This static class provides the default values for the taking day times (times are hardcoded at the moment), the theme color and if the Microsoft Band 2 is in use or not
     /// </summary>
-    static class Settings
-    {
-        public static DateTime defaultMorningTakingTime { get; set; }
-        public static DateTime defaultLunchTakingTime { get; set; }
-        public static DateTime defaultEveningTakingTime { get; set; }
-        public static DateTime defaultNightTakingTime { get; set; }
+    public static class Settings
+    {   
+        //Replaced all DateTime variables with TimeSpan, makes more sense ;)
+        public static TimeSpan defaultMorningTakingTime { get; set; } = new TimeSpan(6, 0, 0);
+        public static TimeSpan defaultLunchTakingTime { get; set; } = new TimeSpan(12, 0, 0);
+        public static TimeSpan defaultEveningTakingTime { get; set; } = new TimeSpan(18, 0, 0);
+        public static TimeSpan defaultNightTakingTime { get; set; } = new TimeSpan(0, 0, 0);
         public static string themeColor { get; set; }
-        public static bool microsoftBandIsUsed { get; set; } 
+        public static bool microsoftBandIsUsed { get; set; }
     }
 }

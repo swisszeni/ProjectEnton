@@ -23,6 +23,12 @@
                             <TextBlock Text="Medikationsplan" Margin="12,0,0,0"/>
                         </StackPanel>
                     </RadioButton>
+                    <RadioButton Tag="Settings" Checked="RadioButton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock Text="Einstellungen" Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
