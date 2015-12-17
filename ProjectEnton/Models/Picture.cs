@@ -9,6 +9,7 @@ namespace ProjectEnton.Models
 {
     /// <summary>
     /// The Picture class containts an url to a picture and and its uui
+    /// author: Florian Schnyder
     /// </summary>
     class Picture
     {

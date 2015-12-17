@@ -8,6 +8,7 @@ namespace ProjectEnton.Models
 {
     /// <summary>
     /// this staic class contains a list with all durgs that the user has taken so far 
+    /// author: Florian Schnyder
     /// </summary>
     static class User
     {

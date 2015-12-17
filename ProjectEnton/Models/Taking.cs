@@ -9,6 +9,7 @@ namespace ProjectEnton.Models
     /// <summary>
     /// The taking class handles the taking of a drug. It contains the needed drug, the planned taking time and the actual taking time.
     /// For each taking, the user is allowed to add an optional comment
+    /// author: Florian Schnyder
     /// </summary>
     class Taking
     {

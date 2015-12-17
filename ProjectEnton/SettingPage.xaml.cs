@@ -8,7 +8,8 @@ using Windows.UI.Xaml.Controls;
 namespace ProjectEnton
 {
     /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
+    /// This page deploys the code for handling all SettingPage intputs.
+    /// author: Florian Schnyder
     /// </summary>
     public sealed partial class SettingPage : Page
     {

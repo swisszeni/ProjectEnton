@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace ProjectEnton.Models
 {
     /// <summary>
-    ///  The Drug class represents a drug with all needed attributes for this app Test
+    /// The Drug class represents a drug with all needed attributes for this app Test
+    /// author: Florian Schnyder
     /// </summary>
     class Drug  
     {

@@ -9,6 +9,7 @@ namespace ProjectEnton.Models
 {
     /// <summary>
     /// This static class provides the default values for the taking day times (times are hardcoded at the moment), the theme color and if the Microsoft Band 2 is in use or not
+    /// author: Florian Schnyder
     /// </summary>
     public static class Settings
     {   
