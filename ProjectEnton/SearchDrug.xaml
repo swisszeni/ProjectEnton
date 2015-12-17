@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="ProjectEnton.SearchDrug"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectEnton"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="AddDrugButton" Content="Hinzufügen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,177,0,0" Background="#008287"/>
+        <Button x:Name="CancelDrugButton" Content="Abbrechen" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.89,6.366" Margin="211,177,0,0"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Medikament suchen:" VerticalAlignment="Top" Margin="42,72,0,0"/>
+        <TextBox x:Name="DrugsearchTextBox" HorizontalAlignment="Left" Margin="98,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <Button x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,120,0,0" Height="32" Width="39"/>
+
+    </Grid>
+</Page>
