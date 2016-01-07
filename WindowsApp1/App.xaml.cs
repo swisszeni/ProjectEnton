@@ -1,26 +1,27 @@
-using ProjectEnton.Services.SettingsServices;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Activation;
+using System;
 using Windows.UI.Xaml;
+using System.Threading.Tasks;
+using WindowsApp1.Services.SettingsServices;
+using Windows.ApplicationModel.Activation;
 
-namespace ProjectEnton
+namespace WindowsApp1
 {
     /// Documentation on APIs used in this page:
     /// https://github.com/Windows-XAML/Template10/wiki
 
     sealed partial class App : Template10.Common.BootStrapper
     {
-
         ISettingsService _settings;
 
         public App()
         {
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-               Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-               Microsoft.ApplicationInsights.WindowsCollectors.Session);
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
 
+            
             #region App settings
 
             _settings = SettingsService.Instance;
@@ -47,7 +48,7 @@ namespace ProjectEnton
             await Task.Delay(0);
 
             // navigate to first page
-            NavigationService.Navigate(typeof(Views.MyMedicamentsPage));
+            NavigationService.Navigate(typeof(Views.MainPage));
         }
     }
 }

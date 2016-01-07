@@ -5,7 +5,7 @@ using Template10.Services.NavigationService;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
-namespace ProjectEnton.Views
+namespace WindowsApp1.Views
 {
     // DOCS: https://github.com/Windows-XAML/Template10/wiki/Docs-%7C-SplitView
     public sealed partial class Shell : Page, INotifyPropertyChanged

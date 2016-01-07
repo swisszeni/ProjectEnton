@@ -1,34 +1,39 @@
 ﻿using ProjectEnton.Models;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ProjectEnton
+namespace ProjectEnton.Views
 {
     /// <summary>
-    /// This page deploys the code for handling all SettingPage intputs.
-    /// author: Florian Schnyder
+    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class SettingPage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public SettingPage()
+        public SettingsPage()
         {
             this.InitializeComponent();
 
-            
-           //Gets the current time values stored within the static Settings.cs class 
-           MorningTimePicker.Time = Settings.defaultMorningTakingTime;
-           LunchTimePicker.Time = Settings.defaultLunchTakingTime;
-           EveningTimePicker.Time = Settings.defaultEveningTakingTime;
-           NightTimePicker.Time = Settings.defaultNightTakingTime;
-        }
 
-        private void SettingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-
+            //Gets the current time values stored within the static Settings.cs class 
+            MorningTimePicker.Time = Settings.defaultMorningTakingTime;
+            LunchTimePicker.Time = Settings.defaultLunchTakingTime;
+            EveningTimePicker.Time = Settings.defaultEveningTakingTime;
+            NightTimePicker.Time = Settings.defaultNightTakingTime;
         }
 
 
@@ -135,7 +140,5 @@ namespace ProjectEnton
                 Settings.defaultNightTakingTime = NightTimePicker.Time;
             }
         }
-
     }
 }
-
