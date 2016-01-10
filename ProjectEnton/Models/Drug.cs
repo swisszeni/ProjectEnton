@@ -38,5 +38,13 @@ namespace ProjectEnton.Models
             this.picture = picture;
         }
 
+        /// <summary>
+        /// To display only the name of a durg, the ToString method has been overridden
+        /// </summary>
+        /// <returns>the drugs name</returns>
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }
