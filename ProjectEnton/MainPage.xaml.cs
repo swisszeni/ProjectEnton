@@ -41,5 +41,10 @@ namespace ProjectEnton
         {
             Frame.Navigate(typeof(SearchDrug));
         }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DrugOverview));
+        }
     }
 }

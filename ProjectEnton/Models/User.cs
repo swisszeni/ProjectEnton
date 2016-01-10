@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace ProjectEnton.Models
 {
     /// <summary>
-    /// this staic class contains a list with all durgs that the user has taken so far 
+    /// this static class contains a list with all durgs that the user has taken so far 
     /// author: Florian Schnyder
     /// </summary>
     static class User
     {
-        public static List<Drug> takenDrugs { get; set; }
-
-        /*
+        public static List<Drug> takenDrugs { get; set; } = new List<Drug>();
+        
+        /*        
         /// <summary>
         /// Singleton pattern to make sure there is only one instance of this class
         /// </summary>
@@ -22,6 +22,7 @@ namespace ProjectEnton.Models
 
         private User()
         {
+           
         }
 
         public static User Instance

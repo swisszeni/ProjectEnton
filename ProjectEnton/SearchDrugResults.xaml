@@ -15,7 +15,6 @@
                 <Button x:Name="AddDrugButton" Content="Medikament hinzufügen" Click="AddDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#008287"/>
                 <Button x:Name="CancelButton" Content="Abbrechen" Click="CancelButton_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
             </StackPanel>
-            <TextBlock>Test</TextBlock>
-        </StackPanel>
+           </StackPanel>
     </Grid>
 </Page>

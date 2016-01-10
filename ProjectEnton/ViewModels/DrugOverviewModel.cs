@@ -5,29 +5,30 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ProjectEnton.ViewModels
 {
     /// <summary>
-    /// This class connects the SearchDrugResult page with the drugs found in the database. According to the MVVM pattern, page and model need to be treated seperately.
+    /// This class connects the DrugOverview page with the drugs stored in the User.cs class. According to the MVVM pattern, page and model need to be treated seperately.
     /// author: Florian Schnyder
     /// </summary>
-    class SearchDrugResultsModel : INotifyPropertyChanged
+    class DrugOverviewModel : INotifyPropertyChanged
     {
-        private List<Drug> currentSearch = new List<Drug>();
+        private List<Drug> allTakenDrugs = new List<Drug>();
 
         /// <summary>
         /// The constructor saves the given list of drugs in a local variable
         /// </summary>
         /// <param name="drugs"></param>
-        public SearchDrugResultsModel(List<Drug> drugs)
+        public DrugOverviewModel(List<Drug> drugs)
         {
-            currentSearch = drugs;
+            allTakenDrugs = drugs;
         }
 
         /// <summary>
         /// this block is responsible for the connection between the view and the result list
-        /// The interface informs the view that a new search was done and that the "ResultList" ListView needs to be updated
+        /// The interface informs the view that a new search was done and that the "DrugOverview" ListView needs to be updated
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -39,17 +40,16 @@ namespace ProjectEnton.ViewModels
             }
 
         }
-
         /// <summary>
         /// get: Return the current list. 
         /// set: If the list is equal, no changes will be done. Otherwise the new list will be saved
         /// </summary>
-        public List<Drug> CurrentSearch
+        public List<Drug> AllTakenDrugs
         {
-            get { return currentSearch; }
+            get { return allTakenDrugs; }
             set
             {
-                if (currentSearch == value)
+                if (allTakenDrugs == value)
                 {
                     return;
                 }
@@ -59,13 +59,14 @@ namespace ProjectEnton.ViewModels
                     {
                         //ResultList.Items.Add(drug.name);
                     }*/
-                    currentSearch = value;
-                    OnPropertyChanged("ResultList");
+                    allTakenDrugs = value;
+                    OnPropertyChanged("DrugOverview");
                 }
 
             }
-        }
 
+        }
 
     }
 }
+
