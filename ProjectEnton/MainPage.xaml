@@ -27,6 +27,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
                             <TextBlock Text="Einstellungen" Margin="12,0,0,0"/>
+                            <Button Content="SucheSeite" Name="Suchen" Click="Suchen_Click"></Button>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>

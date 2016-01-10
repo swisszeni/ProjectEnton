@@ -36,5 +36,10 @@ namespace ProjectEnton
         {
             Frame.Navigate(typeof(SettingPage));
         }
+
+        private void Suchen_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SearchDrug));
+        }
     }
 }
