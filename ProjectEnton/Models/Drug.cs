@@ -15,7 +15,7 @@ namespace ProjectEnton.Models
         public int id { get; set; }
         public string name { get; set; }
         public string activeComponent { get; set; }
-        public float dosage { get; set; }
+        public double dosage { get; set; }
         public string medicationForm { get; set; }
         public Picture picture { get; set; }
 
@@ -28,7 +28,7 @@ namespace ProjectEnton.Models
         /// <param name="dosage">Shows the user the dosage of the needed drug</param>
         /// <param name="medicationForm">Contains the infomation of the drugs form (powder....)</param>
         /// <param name="picture"></param>
-        public Drug(int id, string name, string activeComponent, float dosage, string medicationForm, Picture picture)
+        public Drug(int id, string name, string activeComponent, double dosage, string medicationForm, Picture picture)
         {
             this.id = id;
             this.name = name;
