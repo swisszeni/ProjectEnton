@@ -18,8 +18,8 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="72,167,0,0" TextWrapping="Wrap" Text="Mittag" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Abend" VerticalAlignment="Top" Margin="72,204,0,0"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="72,241,0,0" TextWrapping="Wrap" Text="Nacht" VerticalAlignment="Top"/>
-        <HyperlinkButton Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,286,0,0" Foreground="#008287"/>
-        <HyperlinkButton Content="Uhrzeiten anpassen" HorizontalAlignment="Left" Margin="72,323,0,0" VerticalAlignment="Top" Width="100" Foreground="#008287"/>
+        <HyperlinkButton Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="72,286,0,0" Foreground="#008287" Width="85"/>
+        <HyperlinkButton Content="Uhrzeiten anpassen" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="72,323,0,0" VerticalAlignment="Top" Width="162" Foreground="#008287"/>
 
     </Grid>
 </Page>
