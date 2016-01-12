@@ -31,6 +31,7 @@ namespace ProjectEnton.Views
     public sealed partial class Shell : Page
     {
         private Menu menu = new Menu();
+        private bool hasPhysicalBackButton;
 
         public static Shell Current = null;
 
@@ -56,9 +57,16 @@ namespace ProjectEnton.Views
 
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
 
-            // If on a phone device that has hardware buttons then we hide the app's back button.
-            if (ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+            // Check the availability of a physical back button
+            hasPhysicalBackButton = ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
+
+            // If we have no physical back buttons, we display one in the title bar
+            if (!hasPhysicalBackButton)
             {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppFrame.CanGoBack ?
+                    AppViewBackButtonVisibility.Visible :
+                    AppViewBackButtonVisibility.Collapsed;
                 // this.BackButton.Visibility = Visibility.Collapsed;
             }
 
@@ -125,12 +133,6 @@ namespace ProjectEnton.Views
             e.Handled = handled;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            bool ignored = false;
-            this.BackRequested(ref ignored);
-        }
-
         private void BackRequested(ref bool handled)
         {
             // Get a hold of the current frame so that we can inspect the app back stack.
@@ -181,6 +183,7 @@ namespace ProjectEnton.Views
             if (settingsPage != this.AppFrame.CurrentSourcePageType)
             {
                 this.AppFrame.Navigate(settingsPage);
+                this.CheckTogglePaneButtonSizeChanged();
             }
         }
 
@@ -225,6 +228,15 @@ namespace ProjectEnton.Views
             {
                 var control = (Page)e.Content;
                 control.Loaded += Page_Loaded;
+
+                // After each navigation step we toggle the visibility of the back button
+                if (!hasPhysicalBackButton)
+                {
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                        AppFrame.CanGoBack ?
+                        AppViewBackButtonVisibility.Visible :
+                        AppViewBackButtonVisibility.Collapsed;
+                }
             }
         }
 
