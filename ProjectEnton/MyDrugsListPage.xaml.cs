@@ -15,17 +15,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
-
 namespace ProjectEnton
 {
     /// <summary>
     /// 
     /// author: Florian Schnyder
     /// </summary>
-    public sealed partial class DrugOverview : Page
+    public sealed partial class MyDrugsListPage : Page
     {
-        public DrugOverview()
+        public MyDrugsListPage()
         {
             this.InitializeComponent();
 
