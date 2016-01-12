@@ -99,13 +99,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DrugOverview.xaml.cs">
-      <DependentUpon>DrugOverview.xaml</DependentUpon>
+    <Compile Include="Controls\NavMenuListView.cs" />
+    <Compile Include="Controls\PageHeader.xaml.cs">
+      <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\MyDrugsListPage.xaml.cs">
+      <DependentUpon>MyDrugsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Drug.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Taking.cs" />
@@ -118,13 +121,16 @@
     <Compile Include="SearchDrugResults.xaml.cs">
       <DependentUpon>SearchDrugResults.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingPage.xaml.cs">
-      <DependentUpon>SettingPage.xaml</DependentUpon>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DrugOverviewModel.cs" />
     <Compile Include="ViewModels\SearchDrugResultsModel.cs" />
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TakingPlanPage.xaml.cs">
+      <DependentUpon>TakingPlanPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -155,17 +161,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DrugList.xaml">
+    <Page Include="Controls\PageHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DrugOverview.xaml">
+    <Page Include="Views\MyDrugsListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Notifications.xaml">
       <SubType>Designer</SubType>
@@ -182,7 +184,7 @@
     <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingPage.xaml">
+    <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +197,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TakingPlanPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

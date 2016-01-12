@@ -46,7 +46,7 @@ namespace ProjectEnton
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                // this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
 
@@ -72,10 +72,8 @@ namespace ProjectEnton
 
             if (rootFrame.Content == null)
             {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                // Loading the Shell containing the Navigation and Titlebar
+                rootFrame.Navigate(typeof(Views.Shell), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

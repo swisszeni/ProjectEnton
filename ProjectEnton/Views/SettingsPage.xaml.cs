@@ -27,7 +27,7 @@ namespace ProjectEnton.Views
 
         private void SettingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            // Frame.Navigate(typeof(MainPage));
 
         }
 
