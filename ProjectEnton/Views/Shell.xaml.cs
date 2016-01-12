@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using ProjectEnton.Controls;
 using ProjectEnton.Views;
 using ProjectEnton.Models;
+using Windows.UI.ViewManagement;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -70,6 +71,9 @@ namespace ProjectEnton.Views
                 // this.BackButton.Visibility = Visibility.Collapsed;
             }
 
+            // Adjusting the TitleBar
+            this.AdjustTitleBarColor();
+
             NavMenuList.ItemsSource = menu.MenuItems;
         }
 
@@ -120,6 +124,41 @@ namespace ProjectEnton.Views
                 {
                     control.Focus(FocusState.Programmatic);
                     e.Handled = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adjust the color of the TitleBar or SysytemTray color. Bartype depends on devicetype. Color depends on active theme.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        private void AdjustTitleBarColor()
+        {
+
+            // If App runs on a PC
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+
+                    /*(Color)Application.Current.Resources["Blue"];
+                    titleBar.ButtonBackgroundColor = Colors.DarkBlue;
+                    titleBar.ButtonForegroundColor = Colors.White;
+                    titleBar.BackgroundColor = Colors.Blue;
+                    titleBar.ForegroundColor = Colors.White;*/
+                }
+            }
+
+            // If App runs on a mobile Device
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                var statusBar = StatusBar.GetForCurrentView();
+                if (statusBar != null)
+                {
+                    /*statusBar.BackgroundOpacity = 1;
+                    statusBar.BackgroundColor = Colors.DarkBlue;
+                    statusBar.ForegroundColor = Colors.White;*/
                 }
             }
         }
