@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ProjectEnton
+namespace ProjectEnton.Views
 {
     /// <summary>
     /// This page deploys the code for handling all SettingPage intputs.
