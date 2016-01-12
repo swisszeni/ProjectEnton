@@ -11,9 +11,9 @@ namespace ProjectEnton
     /// This page deploys the code for handling all SettingPage intputs.
     /// author: Florian Schnyder
     /// </summary>
-    public sealed partial class SettingPage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public SettingPage()
+        public SettingsPage()
         {
             this.InitializeComponent();
 
