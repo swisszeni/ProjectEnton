@@ -23,12 +23,12 @@ namespace ProjectEnton.Models
         private static object syncRoot = new Object();
 
         // local setting vars
-        public TimeSpan defaultMorningTakingTime { get; set; }
-        public TimeSpan defaultLunchTakingTime { get; set; }
-        public TimeSpan defaultEveningTakingTime { get; set; }
-        public TimeSpan defaultNightTakingTime { get; set; }
+        private TimeSpan defaultMorningTakingTime { get; set; }
+        private TimeSpan defaultLunchTakingTime { get; set; }
+        private TimeSpan defaultEveningTakingTime { get; set; }
+        private TimeSpan defaultNightTakingTime { get; set; }
         private ElementTheme appTheme;
-        public bool useMicrosoftBand { get; set; }
+        private bool useMicrosoftBand { get; set; }
 
         /// <summary>
         /// Constructor marked private for singleton instance. Instanciates the setting vars from the file system.
@@ -83,6 +83,7 @@ namespace ProjectEnton.Models
 
         /// <summary>
         /// Accessors for the Apptheme
+        /// author: Raphae zenhäusern
         /// </summary>
         public ElementTheme AppTheme
         {
@@ -99,8 +100,97 @@ namespace ProjectEnton.Models
             }
         }
 
+        /// <summary>
+        /// Accessors for the morning time
+        /// author: Raphae zenhäusern
+        /// </summary>
+        public TimeSpan DefaultMorningTakingTime
+        {
+            get
+            {
+                return this.defaultMorningTakingTime;
+            }
+            set
+            {
+                this.defaultMorningTakingTime = value;
+                ApplicationData.Current.LocalSettings.Values["DefaultMorningTakingTime"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Accessors for the lunch time
+        /// author: Raphae zenhäusern
+        /// </summary>
+        public TimeSpan DefaultLunchTakingTime
+        {
+            get
+            {
+                return this.defaultLunchTakingTime;
+            }
+            set
+            {
+                this.defaultLunchTakingTime = value;
+                ApplicationData.Current.LocalSettings.Values["DefaultLunchTakingTime"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Accessors for the evening time
+        /// author: Raphae zenhäusern
+        /// </summary>
+        public TimeSpan DefaultEveningTakingTime
+        {
+            get
+            {
+                return this.defaultEveningTakingTime;
+            }
+            set
+            {
+                this.defaultEveningTakingTime = value;
+                ApplicationData.Current.LocalSettings.Values["DefaultEveningTakingTime"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Accessors for the night time
+        /// author: Raphae zenhäusern
+        /// </summary>
+        public TimeSpan DefaultNightTakingTime
+        {
+            get
+            {
+                return this.defaultNightTakingTime;
+            }
+            set
+            {
+                this.defaultNightTakingTime = value;
+                ApplicationData.Current.LocalSettings.Values["DefaultNightTakingTime"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Accessors for the MS Band user
+        /// author: Raphae zenhäusern
+        /// </summary>
+        public bool UseMicrosoftBand
+        {
+            get
+            {
+                return this.useMicrosoftBand;
+            }
+            set
+            {
+                this.useMicrosoftBand = value;
+                ApplicationData.Current.LocalSettings.Values["UseMicrosoftBand"] = value;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// INotifyPropertyChanged implementation
+        /// author: Raphae zenhäusern
+        /// </summary>
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -45,12 +45,12 @@ namespace ProjectEnton.Views
             }
 
             //Gets the current time values stored within the static Settings.cs class 
-            MorningTimePicker.Time = settings.defaultMorningTakingTime;
-            LunchTimePicker.Time = settings.defaultLunchTakingTime;
-            EveningTimePicker.Time = settings.defaultEveningTakingTime;
-            NightTimePicker.Time = settings.defaultNightTakingTime;
+            MorningTimePicker.Time = settings.DefaultMorningTakingTime;
+            LunchTimePicker.Time = settings.DefaultLunchTakingTime;
+            EveningTimePicker.Time = settings.DefaultEveningTakingTime;
+            NightTimePicker.Time = settings.DefaultNightTakingTime;
 
-            ConnectionMicrosoftBand.IsOn = settings.useMicrosoftBand;
+            ConnectionMicrosoftBand.IsOn = settings.UseMicrosoftBand;
         }
 
 
@@ -73,11 +73,11 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 04:00 - 09:59");
                 await dialog.ShowAsync();
 
-                MorningTimePicker.Time = settings.defaultMorningTakingTime;
+                MorningTimePicker.Time = settings.DefaultMorningTakingTime;
             }
             else
             {
-                settings.defaultMorningTakingTime = MorningTimePicker.Time;
+                settings.DefaultMorningTakingTime = MorningTimePicker.Time;
             }
         }
 
@@ -100,11 +100,11 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 10:00 - 15:59");
                 await dialog.ShowAsync();
 
-                LunchTimePicker.Time = settings.defaultLunchTakingTime;
+                LunchTimePicker.Time = settings.DefaultLunchTakingTime;
             }
             else
             {
-                settings.defaultLunchTakingTime = LunchTimePicker.Time;
+                settings.DefaultLunchTakingTime = LunchTimePicker.Time;
             }
         }
 
@@ -127,11 +127,11 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 16:00 - 21:59");
                 await dialog.ShowAsync();
 
-                EveningTimePicker.Time = settings.defaultEveningTakingTime;
+                EveningTimePicker.Time = settings.DefaultEveningTakingTime;
             }
             else
             {
-                settings.defaultEveningTakingTime = EveningTimePicker.Time;
+                settings.DefaultEveningTakingTime = EveningTimePicker.Time;
             }
         }
 
@@ -154,14 +154,20 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 22:00 - 3:59");
                 await dialog.ShowAsync();
 
-                NightTimePicker.Time = settings.defaultNightTakingTime;
+                NightTimePicker.Time = settings.DefaultNightTakingTime;
             }
             else
             {
-                settings.defaultNightTakingTime = NightTimePicker.Time;
+                settings.DefaultNightTakingTime = NightTimePicker.Time;
             }
         }
 
+        /// <summary>
+        /// Actionhandler to set the according Theme in the settings.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ThemeColor_Checked(object sender, RoutedEventArgs e)
         {
             var radio = sender as RadioButton;
@@ -172,10 +178,16 @@ namespace ProjectEnton.Views
             }
         }
 
+        /// <summary>
+        /// Actionhandler to set the use of the MS Band in the settings.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConnectionMicrosoftBand_Toggled(object sender, RoutedEventArgs e)
         {
             var toggle = sender as ToggleSwitch;
-            settings.useMicrosoftBand = toggle.IsOn;
+            settings.UseMicrosoftBand = toggle.IsOn;
         }
     }
 }
