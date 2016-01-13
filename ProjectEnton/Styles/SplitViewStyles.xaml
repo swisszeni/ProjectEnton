@@ -99,12 +99,12 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="PointerOver">
                                     <VisualState.Setters>
-                                        <Setter Target="HoverOverlay.Visibility" Value="Visible" />
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlBackgroundListLowBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <VisualState.Setters>
-                                        <Setter Target="PressedOverlay.Visibility" Value="Visible" />
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlBackgroundListMediumBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
@@ -120,14 +120,12 @@
                                 </VisualState>
                                 <VisualState x:Name="CheckedPointerOver">
                                     <VisualState.Setters>
-                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
-                                        <Setter Target="HoverOverlay.Visibility" Value="Visible" />
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentMediumBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="CheckedPressed">
                                     <VisualState.Setters>
-                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
-                                        <Setter Target="PressedOverlay.Visibility" Value="Visible" />
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentHighBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="CheckedDisabled">
@@ -141,8 +139,6 @@
                         <ContentPresenter
                                           Content="{TemplateBinding Content}"
                                           AutomationProperties.AccessibilityView="Raw" />
-                        <Rectangle x:Name="PressedOverlay" Fill="White" Opacity=".2" Visibility="Collapsed" />
-                        <Rectangle x:Name="HoverOverlay" Fill="White" Opacity=".1" Visibility="Collapsed" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

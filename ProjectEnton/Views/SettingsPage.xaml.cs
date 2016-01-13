@@ -1,6 +1,7 @@
 ﻿using ProjectEnton.Models;
 using System;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -13,27 +14,49 @@ namespace ProjectEnton.Views
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
+        private Settings settings;
+
         public SettingsPage()
         {
+            settings = Settings.Instance;
+
             this.InitializeComponent();
 
-            
-           //Gets the current time values stored within the static Settings.cs class 
-           MorningTimePicker.Time = Settings.defaultMorningTakingTime;
-           LunchTimePicker.Time = Settings.defaultLunchTakingTime;
-           EveningTimePicker.Time = Settings.defaultEveningTakingTime;
-           NightTimePicker.Time = Settings.defaultNightTakingTime;
+            this.setVisualsFromSettingVars();
         }
 
-        private void SettingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        /// <summary>
+        /// Sets the values for the views with the settings values
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        private void setVisualsFromSettingVars()
         {
-            // Frame.Navigate(typeof(MainPage));
+            switch (settings.AppTheme)
+            {
+                case (ElementTheme.Light):
+                    ThemeColorWhite.IsChecked = true;
+                    break;
+                case (ElementTheme.Dark):
+                    ThemeColorBlack.IsChecked = true;
+                    break;
+                default:
+                    ThemeColorSystem.IsChecked = true;
+                    break;
+            }
 
+            //Gets the current time values stored within the static Settings.cs class 
+            MorningTimePicker.Time = settings.defaultMorningTakingTime;
+            LunchTimePicker.Time = settings.defaultLunchTakingTime;
+            EveningTimePicker.Time = settings.defaultEveningTakingTime;
+            NightTimePicker.Time = settings.defaultNightTakingTime;
+
+            ConnectionMicrosoftBand.IsOn = settings.useMicrosoftBand;
         }
 
 
         /// <summary>
         /// This method checks if the new morning default time is within the range between 4 AM and 9.59 AM. 
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -50,16 +73,17 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 04:00 - 09:59");
                 await dialog.ShowAsync();
 
-                MorningTimePicker.Time = Settings.defaultMorningTakingTime;
+                MorningTimePicker.Time = settings.defaultMorningTakingTime;
             }
             else
             {
-                Settings.defaultMorningTakingTime = MorningTimePicker.Time;
+                settings.defaultMorningTakingTime = MorningTimePicker.Time;
             }
         }
 
         /// <summary>
         /// This method checks if the new lunch default time is within the range between 10 AM and 3.59 PM. 
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -76,16 +100,17 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 10:00 - 15:59");
                 await dialog.ShowAsync();
 
-                LunchTimePicker.Time = Settings.defaultLunchTakingTime;
+                LunchTimePicker.Time = settings.defaultLunchTakingTime;
             }
             else
             {
-                Settings.defaultLunchTakingTime = LunchTimePicker.Time;
+                settings.defaultLunchTakingTime = LunchTimePicker.Time;
             }
         }
 
         /// <summary>
         /// This method checks if the new evening default time is within the range between 16 PM and 21.59 PM. 
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -102,16 +127,17 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 16:00 - 21:59");
                 await dialog.ShowAsync();
 
-                EveningTimePicker.Time = Settings.defaultEveningTakingTime;
+                EveningTimePicker.Time = settings.defaultEveningTakingTime;
             }
             else
             {
-                Settings.defaultEveningTakingTime = EveningTimePicker.Time;
+                settings.defaultEveningTakingTime = EveningTimePicker.Time;
             }
         }
 
         /// <summary>
         /// This method checks if the new night default time is within the range between 22 PM and 03.59 AM. 
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -128,14 +154,25 @@ namespace ProjectEnton.Views
                 var dialog = new MessageDialog("Gewählte Zeit nicht gültig.\nErlaubte Zeitspanne: 22:00 - 3:59");
                 await dialog.ShowAsync();
 
-                NightTimePicker.Time = Settings.defaultNightTakingTime;
+                NightTimePicker.Time = settings.defaultNightTakingTime;
             }
             else
             {
-                Settings.defaultNightTakingTime = NightTimePicker.Time;
+                settings.defaultNightTakingTime = NightTimePicker.Time;
             }
         }
 
+        private void ThemeColor_Checked(object sender, RoutedEventArgs e)
+        {
+            var radio = sender as RadioButton;
+            settings.AppTheme = (ElementTheme)Convert.ToInt16(radio.Tag);
+        }
+
+        private void ConnectionMicrosoftBand_Toggled(object sender, RoutedEventArgs e)
+        {
+            var toggle = sender as ToggleSwitch;
+            settings.useMicrosoftBand = toggle.IsOn;
+        }
     }
 }
 

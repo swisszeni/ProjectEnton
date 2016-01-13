@@ -33,6 +33,7 @@ namespace ProjectEnton.Views
     {
         private Menu menu = new Menu();
         private bool hasPhysicalBackButton;
+        private Settings settings;
 
         public static Shell Current = null;
 
@@ -61,6 +62,12 @@ namespace ProjectEnton.Views
 
             // Check the availability of a physical back button
             hasPhysicalBackButton = ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
+
+            // Getting a pointer to the Settings
+            settings = Settings.Instance;
+
+            // Subscribing to changes in system settings
+            settings.PropertyChanged += SettingsPropertyChanged;
 
             NavMenuList.ItemsSource = menu.MenuItems;
 
@@ -153,6 +160,16 @@ namespace ProjectEnton.Views
             }
         }
 
+        public void SettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch(e.PropertyName)
+            {
+                case "AppTheme":
+                    AdjustTitleBarColor();
+                    break;
+            }
+        }
+
         /// <summary>
         /// Adjust the color of the TitleBar or SysytemTray color. Bartype depends on devicetype. Color depends on active theme.
         /// author: Raphael Zenhäusern
@@ -169,16 +186,17 @@ namespace ProjectEnton.Views
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
-                    SolidColorBrush titleButtonHoverBrush = Application.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"] as SolidColorBrush;
-                    SolidColorBrush titleButtonPressBrush = Application.Current.Resources["SystemControlForegroundChromeHighBrush"] as SolidColorBrush;
+                    SolidColorBrush titleButtonHoverBrush = Application.Current.Resources["SystemControlForegroundChromeHighBrush"] as SolidColorBrush;
+                    SolidColorBrush titleButtonPressBrush = Application.Current.Resources["SystemControlForegroundChromeDisabledLowBrush"] as SolidColorBrush;
 
                     titleBar.BackgroundColor = titleBackgroundBrush.Color;
-                    titleBar.ForegroundColor = Windows.UI.Colors.White;
+                    titleBar.ForegroundColor = titleForegroundBrush.Color;
                     titleBar.ButtonBackgroundColor = titleBackgroundBrush.Color;
                     titleBar.ButtonHoverBackgroundColor = titleButtonHoverBrush.Color;
                     titleBar.ButtonPressedBackgroundColor = titleButtonPressBrush.Color;
                     titleBar.ButtonForegroundColor = titleForegroundBrush.Color;
                     titleBar.ButtonHoverForegroundColor = titleForegroundBrush.Color;
+                    titleBar.ButtonPressedForegroundColor = titleForegroundBrush.Color;
                 }
             }
 

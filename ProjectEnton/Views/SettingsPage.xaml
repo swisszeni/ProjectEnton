@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProjectEnton"
     xmlns:controls="using:ProjectEnton.Controls"
+    xmlns:appTheme="using:Windows.UI.Xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="{x:Bind settings.AppTheme, Mode=OneWay}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -25,9 +27,9 @@
                 <StackPanel Orientation="Vertical" Margin="20">
                     <TextBlock Text="Hintergrund" FontSize="20" />
                     <StackPanel Margin="12">
-                        <RadioButton x:Name ="ThemeColorWhite" GroupName="ThemeColor" Content="Hell" IsThreeState="False"/>
-                        <RadioButton x:Name ="ThemeColorBlack" GroupName="ThemeColor" Content="Dunkel" IsThreeState="False"/>
-                        <RadioButton x:Name ="ThemeColorSystem" GroupName="ThemeColor" Content="Systemeinstellungen verwenden" IsThreeState="False"/>
+                        <RadioButton x:Name ="ThemeColorWhite" Tag="1"  Checked="ThemeColor_Checked" GroupName="ThemeColor" Content="Hell" IsThreeState="False" />
+                        <RadioButton x:Name ="ThemeColorBlack"  Tag="2" Checked="ThemeColor_Checked" GroupName="ThemeColor" Content="Dunkel" IsThreeState="False"/>
+                        <RadioButton x:Name ="ThemeColorSystem" Tag="0"  Checked="ThemeColor_Checked" GroupName="ThemeColor" Content="Systemeinstellungen verwenden" IsThreeState="False"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="20">
@@ -44,8 +46,8 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="20">
                     <TextBlock Text="Microsoft Band" FontSize="20" />
-                    <TextBlock Text="Verügen Sie über ein Microsoft Band welches mit diesem Gerät gekoppelt ist? Wenn ja, können Sie hier die Benachrichtigungen für das Band aktivieren." TextWrapping="Wrap" Margin="12"/>
-                    <ToggleSwitch x:Name="ConnectionMicrosoftBand" Margin="12"/>
+                    <TextBlock Text="Verfügen Sie über ein Microsoft Band welches mit diesem Gerät gekoppelt ist? Wenn ja, können Sie hier die Benachrichtigungen für das Band aktivieren." TextWrapping="Wrap" Margin="12"/>
+                    <ToggleSwitch x:Name="ConnectionMicrosoftBand" Toggled="ConnectionMicrosoftBand_Toggled" Margin="12"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

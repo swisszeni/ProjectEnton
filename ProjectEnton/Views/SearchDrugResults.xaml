@@ -19,14 +19,14 @@
                 <TextBlock x:Name="Title" Text="RESULTAT FÜR X" Style="{ThemeResource PageTitleTextBlockStyle}"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
-        
-        <StackPanel Margin="20" Grid.Row="1">
+
+        <StackPanel Margin="20" Grid.Row="1" Background="Black">
             <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gefundene Medikamente:"></TextBlock>
             <ListView x:Name="ResultList" ItemsSource="{Binding CurrentSearch}" HorizontalAlignment="Left" MaxHeight="400" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="AddDrugButton" Content="Medikament hinzufügen" Click="AddDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#008287"/>
+                <Button x:Name="AddDrugButton" Content="Medikament hinzufügen" Click="AddDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
                 <Button x:Name="CancelButton" Content="Abbrechen" Click="CancelButton_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
             </StackPanel>
-           </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
