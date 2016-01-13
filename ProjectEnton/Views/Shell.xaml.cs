@@ -56,10 +56,26 @@ namespace ProjectEnton.Views
                     this.CheckTogglePaneButtonSizeChanged();
                 });
 
+
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
 
             // Check the availability of a physical back button
             hasPhysicalBackButton = ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
+
+            NavMenuList.ItemsSource = menu.MenuItems;
+
+            this.InitializeVisualState();
+        }
+
+
+        /// <summary>
+        /// Additional methods to tweak the layout to the state expected by the user.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        public void InitializeVisualState()
+        {
+            // Adjusting the TitleBar
+            this.AdjustTitleBarColor();
 
             // If we have no physical back buttons, we display one in the title bar
             if (!hasPhysicalBackButton)
@@ -70,10 +86,20 @@ namespace ProjectEnton.Views
                     AppViewBackButtonVisibility.Collapsed;
             }
 
-            // Adjusting the TitleBar
-            this.AdjustTitleBarColor();
+            // Eventhandler to select the proper menu entry when the page is finished loading
+            this.Loaded += (sender, e) =>
+            {
+                var item = (from p in this.menu.MenuItems where p.DestPage == this.AppFrame.CurrentSourcePageType select p).SingleOrDefault();
+                var container = (ListViewItem)NavMenuList.ContainerFromItem(item);
 
-            NavMenuList.ItemsSource = menu.MenuItems;
+                // While updating the selection state of the item prevent it from taking keyboard focus.  If a
+                // user is invoking the back button via the keyboard causing the selected nav menu item to change
+                // then focus will remain on the back button.
+                if (container != null) container.IsTabStop = false;
+                NavMenuList.SetSelectedItem(container);
+                if (container != null) container.IsTabStop = true;
+
+            };
         }
 
         public Frame AppFrame { get { return this.frame; } }

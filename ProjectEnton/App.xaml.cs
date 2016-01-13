@@ -79,6 +79,7 @@ namespace ProjectEnton
                 // Loading the Shell containing the Navigation and Titlebar
                 shell.AppFrame.Navigate(typeof(MyDrugsListPage), e.Arguments);
             }
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
