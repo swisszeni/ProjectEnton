@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ProjectEnton
+namespace ProjectEnton.Views
 {
     /// <summary>
     /// This page shows all drugs that matcht with the user input entered on page "SearchDrug"
