@@ -20,24 +20,40 @@
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
 
-        <StackPanel Grid.Row="1" Margin="20">
-            <ListBox x:Name="morningListView" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="White">
-                <ListBoxItem Background="#008287" x:Name="morningTitle" Content="Morgen"></ListBoxItem>
-                <ListBoxItem></ListBoxItem>
-            </ListBox>
-            <ListBox x:Name="noonListView" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ListBoxItem Background="#008287" x:Name="noonTitle" Content="Mittag"></ListBoxItem>
-                <ListBoxItem></ListBoxItem>
-            </ListBox>
-            <ListBox x:Name="eveningListView" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ListBoxItem Background="#008287" x:Name="eveningTitle" Content="Abend"></ListBoxItem>
-                <ListBoxItem></ListBoxItem>
-            </ListBox>
-            <ListBox x:Name="nightListView" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ListBoxItem Background="#008287" x:Name="nightTitle" Content="Nacht"></ListBoxItem>
-                <ListBoxItem></ListBoxItem>
-            </ListBox>
-        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="30,50,10,0">
+            <TextBlock x:Name="TodaysDate" Margin="0,20,0,0"></TextBlock>
 
+            <StackPanel x:Name="MorningPanel" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Morgen"/>
+                    <Image Source="/Assets/morning.png" Height="20" Width="20" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <ListView x:Name="morningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#008287"/>
+            </StackPanel>
+
+            <StackPanel x:Name="NoonPanel" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Mittag"/>
+                    <Image Source="/Assets/noon.png" Height="20" Width="20" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <ListView x:Name="noonListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#008287"/>
+            </StackPanel>
+
+            <StackPanel x:Name="EveningPanel" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Abend"/>
+                    <Image Source="/Assets/evening.png" Height="20" Width="20" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <ListView x:Name="eveningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#008287"/>
+            </StackPanel>
+
+            <StackPanel x:Name="NightPanel" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nacht"/>
+                    <Image Source="/Assets/night.png" Height="20" Width="20" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <ListView x:Name="nightListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Background="#008287"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
