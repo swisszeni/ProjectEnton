@@ -19,7 +19,9 @@ using Windows.UI.Xaml.Navigation;
 namespace ProjectEnton.Views
 {
     /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
+    /// This class displays an overview for all drug takings for a specific day.
+    /// At the moment, it only shows todays takings
+    /// author: Florian Schnyder
     /// </summary>
     public sealed partial class TakingPlanPage : Page
     {
