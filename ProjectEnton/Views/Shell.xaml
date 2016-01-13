@@ -12,22 +12,6 @@
     TabNavigation="Cycle"
     mc:Ignorable="d">
 
-    <!--
-    <Page.Resources>
-
-        <ResourceDictionary>
-
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles/SplitViewStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="TextBlock" BasedOn="{StaticResource SplitViewTextBlockStyle}" />
-            <Style TargetType="RadioButton" BasedOn="{StaticResource SplitViewRadioButtonStyle}" />
-
-        </ResourceDictionary>
-
-    </Page.Resources>
--->
     <Page.Resources>
         <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="models:MenuItem">
             <Grid>
@@ -87,13 +71,23 @@
                                           ItemTemplate="{StaticResource NavMenuItemTemplate}"
                                           ItemInvoked="NavMenuList_ItemInvoked">
                     </controls:NavMenuListView>
-                    <Button x:Name="BackButton"
+                    <ToggleButton x:Name="SettingsButton"
                                 Grid.Row="1"
                                 TabIndex="2"
-                                Style="{StaticResource NavigationSettingsButtonStyle}"
+                                Style="{StaticResource SettinsTogglePaneButtonStyle}"
                                 Width="{Binding ItemsPanelRoot.Width, ElementName=NavMenuList}"
                                 HorizontalAlignment="{Binding ItemsPanelRoot.HorizontalAlignment, ElementName=NavMenuList}"
-                                Click="SettingsButton_Click"/>
+                                Click="SettingsButton_Click"
+                               >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="Glyph" Grid.Column="0" FontSize="18" Text="&#xE713;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="Text" Grid.Column="1" Style="{ThemeResource BodyTextBlockStyle}" Text="Einstellungen" VerticalAlignment="Center" />
+                        </Grid>
+                    </ToggleButton>
                 </Grid>
 
 

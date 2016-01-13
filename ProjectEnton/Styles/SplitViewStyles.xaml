@@ -42,7 +42,7 @@
                                 <VisualState x:Name="Disabled">
                                     <VisualState.Setters>
                                         <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
-                                        <Setter Target="TogglePaneButton.Background" Value="{ThemeResource SystemControlDisabledAccentBrush}" />
+                                        <Setter Target="LayoutRoot.Background" Value="{ThemeResource SystemControlDisabledAccentBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Checked"/>
@@ -59,7 +59,7 @@
                                 <VisualState x:Name="CheckedDisabled">
                                     <VisualState.Setters>
                                         <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
-                                        <Setter Target="TogglePaneButton.Background" Value="{ThemeResource SystemControlDisabledAccentBrush}" />
+                                        <Setter Target="LayoutRoot.Background" Value="{ThemeResource SystemControlDisabledAccentBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -78,6 +78,77 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SettinsTogglePaneButtonStyle" TargetType="ToggleButton">
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="AutomationProperties.Name" Value="Menu" />
+        <Setter Property="UseSystemFocusVisuals" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="{TemplateBinding Background}" x:Name="RootGrid" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="HoverOverlay.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Target="PressedOverlay.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Checked">
+                                    <VisualState.Setters>
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
+                                        <Setter Target="HoverOverlay.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPressed">
+                                    <VisualState.Setters>
+                                        <Setter Target="RootGrid.Background" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}" />
+                                        <Setter Target="PressedOverlay.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CheckedDisabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
+                                        <Setter Target="TogglePaneButton.Background" Value="{ThemeResource SystemControlDisabledAccentBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter
+                                          Content="{TemplateBinding Content}"
+                                          AutomationProperties.AccessibilityView="Raw" />
+                        <Rectangle x:Name="PressedOverlay" Fill="White" Opacity=".2" Visibility="Collapsed" />
+                        <Rectangle x:Name="HoverOverlay" Fill="White" Opacity=".1" Visibility="Collapsed" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="NavigationSettingsButtonStyle" TargetType="Button" BasedOn="{StaticResource NavigationBackButtonNormalStyle}">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -85,18 +156,6 @@
         <Setter Property="Width" Value="NaN"/>
         <Setter Property="MinWidth" Value="48"/>
         <Setter Property="AutomationProperties.Name" Value="Back"/>
-        <Setter Property="Content">
-            <Setter.Value>
-                <Grid x:Name="RootGrid">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="Glyph" Grid.Column="0" FontSize="18" Text="&#xE713;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="Text" Grid.Column="1" Style="{ThemeResource BodyTextBlockStyle}" Text="Einstellungen" VerticalAlignment="Center" />
-                </Grid>
-            </Setter.Value>
-        </Setter>
     </Style>
 
     <Style x:Key="PageTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">

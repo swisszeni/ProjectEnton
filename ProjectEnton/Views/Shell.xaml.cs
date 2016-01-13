@@ -26,7 +26,7 @@ namespace ProjectEnton.Views
     /// <summary>
     /// The "chrome" layer of the app that provides top-level navigation with
     /// proper keyboarding navigation.
-    /// Mostly taken from the UWP Samples from Microsoft on GitHub and adjusted for our needs.
+    /// Originally taken from the UWP Samples from Microsoft on GitHub and adjusted for our needs.
     /// author: Raphael Zenhäusern
     /// </summary>
     public sealed partial class Shell : Page
@@ -68,7 +68,6 @@ namespace ProjectEnton.Views
                     AppFrame.CanGoBack ?
                     AppViewBackButtonVisibility.Visible :
                     AppViewBackButtonVisibility.Collapsed;
-                // this.BackButton.Visibility = Visibility.Collapsed;
             }
 
             // Adjusting the TitleBar
@@ -218,47 +217,77 @@ namespace ProjectEnton.Views
         /// <param name="e"></param>
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            // Enable the Button under any circumstance
+            SettingsButton.IsChecked = true;
+
             var settingsPage = typeof(SettingsPage);
             if (settingsPage != this.AppFrame.CurrentSourcePageType)
             {
                 this.AppFrame.Navigate(settingsPage);
-                this.CheckTogglePaneButtonSizeChanged();
+            }
+
+            // Unselect any other menu point
+            NavMenuList.SetSelectedItem(null);
+
+            // Close the Menu if it is in narrow mode
+            if (this.ShellSplitView.IsPaneOpen && (
+                this.ShellSplitView.DisplayMode == SplitViewDisplayMode.CompactOverlay ||
+                this.ShellSplitView.DisplayMode == SplitViewDisplayMode.Overlay))
+            {
+                this.ShellSplitView.IsPaneOpen = false;
             }
         }
 
         /// <summary>
         /// Ensures the nav menu reflects reality when navigation is triggered outside of
         /// the nav menu buttons.
+        /// author: Raphael Zenhäusern
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
         {
-            if (e.NavigationMode == NavigationMode.Back)
+            if (e.SourcePageType == typeof(SettingsPage))
             {
-                var item = (from p in this.menu.MenuItems where p.DestPage == e.SourcePageType select p).SingleOrDefault();
-                if (item == null && this.AppFrame.BackStackDepth > 0)
+                // we are heading towards the settings page, highligt button in any case
+                SettingsButton.IsChecked = true;
+
+                // deselect potentially selected other menu entrys
+                NavMenuList.SetSelectedItem(null);
+            }
+            else
+            {
+                // we are not heading to the settings page, disable the highligting of the button in any case
+                SettingsButton.IsChecked = false;
+
+                if (e.NavigationMode == NavigationMode.Back)
                 {
-                    // In cases where a page drills into sub-pages then we'll highlight the most recent
-                    // navigation menu item that appears in the BackStack
-                    foreach (var entry in this.AppFrame.BackStack.Reverse())
+                    var item = (from p in this.menu.MenuItems where p.DestPage == e.SourcePageType select p).SingleOrDefault();
+                    if (item == null && this.AppFrame.BackStackDepth > 0)
                     {
-                        item = (from p in this.menu.MenuItems where p.DestPage == entry.SourcePageType select p).SingleOrDefault();
-                        if (item != null)
-                            break;
+                        // In cases where a page drills into sub-pages then we'll highlight the most recent
+                        // navigation menu item that appears in the BackStack
+                        foreach (var entry in this.AppFrame.BackStack.Reverse())
+                        {
+                            item = (from p in this.menu.MenuItems where p.DestPage == entry.SourcePageType select p).SingleOrDefault();
+                            if (item != null)
+                                break;
+                        }
                     }
+
+                    var container = (ListViewItem)NavMenuList.ContainerFromItem(item);
+
+                    // While updating the selection state of the item prevent it from taking keyboard focus.  If a
+                    // user is invoking the back button via the keyboard causing the selected nav menu item to change
+                    // then focus will remain on the back button.
+                    if (container != null) container.IsTabStop = false;
+                    NavMenuList.SetSelectedItem(container);
+                    if (container != null) container.IsTabStop = true;
                 }
 
-                var container = (ListViewItem)NavMenuList.ContainerFromItem(item);
-
-                // While updating the selection state of the item prevent it from taking keyboard focus.  If a
-                // user is invoking the back button via the keyboard causing the selected nav menu item to change
-                // then focus will remain on the back button.
-                if (container != null) container.IsTabStop = false;
-                NavMenuList.SetSelectedItem(container);
-                if (container != null) container.IsTabStop = true;
             }
         }
+
 
         private void OnNavigatedToPage(object sender, NavigationEventArgs e)
         {
