@@ -3,6 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <Color x:Key="SystemAccentColor">#009999</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
     <!--<SolidColorBrush x:Key="SplitViewBackgroundBrush" Color="{ThemeResource SystemBaseMediumColor}" Opacity="1" />
     <SolidColorBrush x:Key="SplitViewForegroundBrush" Color="{ThemeResource SystemBaseHighColor}" />
     <SolidColorBrush x:Key="NavButtonPressedBackgroundBrush" Color="{ThemeResource SystemListMediumColor}" />

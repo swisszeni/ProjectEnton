@@ -10,6 +10,7 @@
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/SplitViewStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
