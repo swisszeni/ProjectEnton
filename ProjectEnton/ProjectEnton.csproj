@@ -140,6 +140,10 @@
     <None Include="ProjectEnton_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\evening.png" />
+    <Content Include="Assets\morning.png" />
+    <Content Include="Assets\night.png" />
+    <Content Include="Assets\noon.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
     <Content Include="Assets\Square71x71Logo.scale-100.png" />
