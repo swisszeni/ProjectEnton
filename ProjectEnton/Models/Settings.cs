@@ -94,6 +94,7 @@ namespace ProjectEnton.Models
             set
             {
                 ApplicationData.Current.LocalSettings.Values["AppTheme"] = (int)value;
+                this.appTheme = value;
                 this.OnPropertyChanged();
             }
         }

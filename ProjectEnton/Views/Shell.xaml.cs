@@ -66,9 +66,6 @@ namespace ProjectEnton.Views
             // Getting a pointer to the Settings
             settings = Settings.Instance;
 
-            // Subscribing to changes in system settings
-            settings.PropertyChanged += SettingsPropertyChanged;
-
             NavMenuList.ItemsSource = menu.MenuItems;
 
             this.InitializeVisualState();
@@ -160,16 +157,6 @@ namespace ProjectEnton.Views
             }
         }
 
-        public void SettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch(e.PropertyName)
-            {
-                case "AppTheme":
-                    AdjustTitleBarColor();
-                    break;
-            }
-        }
-
         /// <summary>
         /// Adjust the color of the TitleBar or SysytemTray color. Bartype depends on devicetype. Color depends on active theme.
         /// author: Raphael Zenhäusern
@@ -177,7 +164,7 @@ namespace ProjectEnton.Views
         private void AdjustTitleBarColor()
         {
             // Get the same brush the title header uses
-            SolidColorBrush titleBackgroundBrush = Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"] as SolidColorBrush;
+            SolidColorBrush titleBackgroundBrush = this.Resources["SystemControlBackgroundChromeMediumBrush"] as SolidColorBrush;
             SolidColorBrush titleForegroundBrush = Application.Current.Resources["SystemControlForegroundBaseHighBrush"] as SolidColorBrush;
 
             // If App runs on a PC
@@ -250,7 +237,6 @@ namespace ProjectEnton.Views
         private void NavMenuList_ItemInvoked(object sender, ListViewItem listViewItem)
         {
             var item = (MenuItem)((NavMenuListView)sender).ItemFromContainer(listViewItem);
-
             if (item != null)
             {
                 if (item.DestPage != null &&

@@ -33,6 +33,18 @@ namespace ProjectEnton
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
+            // Only set requested theme when color is defined. Otherwise use system value
+            ElementTheme theme = Models.Settings.Instance.AppTheme;
+            if (theme == ElementTheme.Dark)
+            {
+                this.RequestedTheme = ApplicationTheme.Dark;
+            }
+            else if (theme == ElementTheme.Light)
+            {
+                this.RequestedTheme = ApplicationTheme.Light;
+            }
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -53,6 +65,8 @@ namespace ProjectEnton
             }
 #endif
 
+
+            // Create the shell
             Shell shell = Window.Current.Content as Shell;
 
 

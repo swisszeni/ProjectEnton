@@ -165,7 +165,11 @@ namespace ProjectEnton.Views
         private void ThemeColor_Checked(object sender, RoutedEventArgs e)
         {
             var radio = sender as RadioButton;
-            settings.AppTheme = (ElementTheme)Convert.ToInt16(radio.Tag);
+            ElementTheme tempTheme = (ElementTheme)Convert.ToInt16(radio.Tag);
+            if (settings.AppTheme != tempTheme)
+            {
+                settings.AppTheme = tempTheme;
+            }
         }
 
         private void ConnectionMicrosoftBand_Toggled(object sender, RoutedEventArgs e)
