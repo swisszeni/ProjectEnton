@@ -3,15 +3,34 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProjectEnton"
+    xmlns:controls="using:ProjectEnton.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="42,60,0,0">
-            <TextBlock x:Name="OverviewTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Meine Medikamente:"></TextBlock>
-            <ListView x:Name="DrugOverviewList" ItemsSource="{Binding AllTakenDrugs}" HorizontalAlignment="Left" MaxHeight="400" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-            <Button Content="Zurück für Tests" Click="Button_Click"></Button>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader Grid.Row="0">
+            <controls:PageHeader.HeaderContent>
+                <TextBlock x:Name="Title" Text="MEINE MEDIKAMENTE" Style="{ThemeResource PageTitleTextBlockStyle}"/>
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
+
+        <ListView x:Name="DrugOverviewList" 
+                  Grid.Row="1"
+                  ItemsSource="{Binding AllTakenDrugs}" 
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <AppBar x:Name="InteractionBar" Grid.Row="2" ClosedDisplayMode="Compact">
+            <AppBarButton x:Name="AddMedicamentButton" Icon="Add" Label="Medikament hinzufügen" Click="AddMedicamentButton_Click"/>
+        </AppBar>
     </Grid>
+
 </Page>
