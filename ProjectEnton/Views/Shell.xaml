@@ -29,7 +29,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
         <!-- Adaptive triggers -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -54,7 +54,7 @@
         </VisualStateManager.VisualStateGroups>
         
         <!-- Top-level navigation menu + app content -->
-        <SplitView x:Name="ShellSplitView" DisplayMode="Inline" OpenPaneLength="256" IsTabStop="False">
+        <SplitView x:Name="ShellSplitView" DisplayMode="Inline" OpenPaneLength="256" IsTabStop="False" Background="Transparent" Margin="0 48 0 0">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -65,7 +65,7 @@
                     <controls:NavMenuListView x:Name="NavMenuList"
                                           Grid.Row="0"
                                           TabIndex="3"
-                                          Margin="0,48,0,0"
+                                          Margin="0"
                                           ContainerContentChanging="NavMenuItemContainerContentChanging"
                                           ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}"
                                           ItemTemplate="{StaticResource NavMenuItemTemplate}"
@@ -98,7 +98,8 @@
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
             <Frame x:Name="frame"
                    Navigating="OnNavigatingToPage"
-                   Navigated="OnNavigatedToPage">
+                   Navigated="OnNavigatedToPage"
+                   Margin="0 -48 0 0">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>

@@ -159,6 +159,9 @@ namespace ProjectEnton.Views
         /// </summary>
         private void AdjustTitleBarColor()
         {
+            // Get the same brush the title header uses
+            SolidColorBrush titleBackgroundBrush = Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"] as SolidColorBrush;
+            SolidColorBrush titleForegroundBrush = Application.Current.Resources["SystemControlForegroundBaseHighBrush"] as SolidColorBrush;
 
             // If App runs on a PC
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
@@ -166,12 +169,16 @@ namespace ProjectEnton.Views
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
+                    SolidColorBrush titleButtonHoverBrush = Application.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"] as SolidColorBrush;
+                    SolidColorBrush titleButtonPressBrush = Application.Current.Resources["SystemControlForegroundChromeHighBrush"] as SolidColorBrush;
 
-                    /*(Color)Application.Current.Resources["Blue"];
-                    titleBar.ButtonBackgroundColor = Colors.DarkBlue;
-                    titleBar.ButtonForegroundColor = Colors.White;
-                    titleBar.BackgroundColor = Colors.Blue;
-                    titleBar.ForegroundColor = Colors.White;*/
+                    titleBar.BackgroundColor = titleBackgroundBrush.Color;
+                    titleBar.ForegroundColor = Windows.UI.Colors.White;
+                    titleBar.ButtonBackgroundColor = titleBackgroundBrush.Color;
+                    titleBar.ButtonHoverBackgroundColor = titleButtonHoverBrush.Color;
+                    titleBar.ButtonPressedBackgroundColor = titleButtonPressBrush.Color;
+                    titleBar.ButtonForegroundColor = titleForegroundBrush.Color;
+                    titleBar.ButtonHoverForegroundColor = titleForegroundBrush.Color;
                 }
             }
 
@@ -181,9 +188,9 @@ namespace ProjectEnton.Views
                 var statusBar = StatusBar.GetForCurrentView();
                 if (statusBar != null)
                 {
-                    /*statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = Colors.DarkBlue;
-                    statusBar.ForegroundColor = Colors.White;*/
+                    statusBar.BackgroundOpacity = 1;
+                    statusBar.BackgroundColor = titleBackgroundBrush.Color;
+                    statusBar.ForegroundColor = titleForegroundBrush.Color;
                 }
             }
         }
