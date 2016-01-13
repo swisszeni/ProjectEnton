@@ -94,6 +94,8 @@ namespace ProjectEnton.Controls
             for (int i = 0; i < this.Items.Count; i++)
             {
                 var lvi = (ListViewItem)this.ContainerFromIndex(i);
+                // Catch if no item is found to prevent a crash. This may occur if the view isn't yet loaded properly.
+                if (lvi == null) continue;
                 if (i != index)
                 {
                     lvi.IsSelected = false;
