@@ -34,13 +34,13 @@
                     <TextBlock Text="Einnahmezeiten" FontSize="20" />
                     <TextBlock Text="Definieren Sie die standardmässigen Einnahmezeiten führ Ihre Medikamente. Sie können diese bei jedem Medikament individuell anpassen." TextWrapping="Wrap" Margin="12"/>
                     <TextBlock Margin="12" Text="Morgen" />
-                    <TimePicker x:Name="MorningTimePicker" TimeChanged="MorningTimePicker_TimeChanged" Margin="12" Width="30" />
+                    <TimePicker x:Name="MorningTimePicker" TimeChanged="MorningTimePicker_TimeChanged" Margin="12 4 12 12" Width="30" />
                     <TextBlock Margin="12" Text=" Mittag" />
-                    <TimePicker x:Name="LunchTimePicker" TimeChanged="LunchTimePicker_TimeChanged" Margin="12" Width="30" />
+                    <TimePicker x:Name="LunchTimePicker" TimeChanged="LunchTimePicker_TimeChanged" Margin="12 4 12 12" Width="30" />
                     <TextBlock Margin="12" Text="Abend" />
-                    <TimePicker x:Name="EveningTimePicker" TimeChanged="EveningTimePicker_TimeChanged" Margin="12" Width="30" />
-                    <TextBlock Margin="10" Text="Nacht" />
-                    <TimePicker x:Name="NightTimePicker" TimeChanged="NightTimePicker_TimeChanged" Margin="12" Width="30" />
+                    <TimePicker x:Name="EveningTimePicker" TimeChanged="EveningTimePicker_TimeChanged" Margin="12 4 12 12" Width="30" />
+                    <TextBlock Margin="12" Text="Nacht" />
+                    <TimePicker x:Name="NightTimePicker" TimeChanged="NightTimePicker_TimeChanged" Margin="12 4 12 12" Width="30" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="20">
                     <TextBlock Text="Microsoft Band" FontSize="20" />
