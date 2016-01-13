@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="ProjectEnton.Views.SearchDrug"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectEnton.Views"
+    xmlns:controls="using:ProjectEnton.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="LayoutRoot">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="InitiateBarcodescanButton.(RelativePanel.RightOf)" Value="SearchDrugButton" />
+                        <Setter Target="InitiateBarcodescanButton.(RelativePanel.AlignTopWith)" Value="SearchDrugButton" />
+                        <Setter Target="InitiateBarcodescanButton.Margin" Value="20 0 0 0" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="InitiateBarcodescanButton.(RelativePanel.Below)" Value="DrugsearchTextBox" />
+                        <Setter Target="InitiateBarcodescanButton.Margin" Value="0 20 0 0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader Grid.Row="0">
+            <controls:PageHeader.HeaderContent>
+                <TextBlock x:Name="Title" Text="MEDIKAMENT SUCHEN" Style="{ThemeResource PageTitleTextBlockStyle}"/>
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
+
+        <RelativePanel Grid.Row="1" Margin="20">
+            <TextBlock x:Name="DescriptionText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Suchen Sie ein Medikament in der Datenbank via Name oder dem Strichcode." />
+            <TextBox x:Name="DrugsearchTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" Margin="0 20 0 0" PlaceholderText="Medikamentenname" RelativePanel.Below="DescriptionText"/>
+            <Button x:Name="SearchDrugButton" Content="Suchen" Click="SearchDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#008287" RelativePanel.RightOf="DrugsearchTextBox" RelativePanel.AlignTopWith="DrugsearchTextBox" Margin="20 20 0 0"/>
+            <Button x:Name="InitiateBarcodescanButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE722;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                    <TextBlock Text="Strichcode scannen" Margin="20 0 0 0"/>
+                </StackPanel>
+            </Button>
+        </RelativePanel>
+    </Grid>
+</Page>

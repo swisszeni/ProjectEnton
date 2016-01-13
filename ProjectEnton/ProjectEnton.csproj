@@ -115,10 +115,10 @@
     <Compile Include="Models\TakingPlan.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchDrug.xaml.cs">
+    <Compile Include="Views\SearchDrug.xaml.cs">
       <DependentUpon>SearchDrug.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SearchDrugResults.xaml.cs">
+    <Compile Include="Views\SearchDrugResults.xaml.cs">
       <DependentUpon>SearchDrugResults.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
@@ -177,11 +177,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchDrug.xaml">
+    <Page Include="Views\SearchDrug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchDrugResults.xaml">
+    <Page Include="Views\SearchDrugResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
