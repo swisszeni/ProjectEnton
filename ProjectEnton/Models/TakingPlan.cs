@@ -14,7 +14,6 @@ namespace ProjectEnton.Models
     /// </summary>
     [Flags]
     public enum DayTime { Morning = 0x01, Lunch = 0x02, Evening = 0x04, Night = 0x08 };
-    //public enum DayTime { Morning = 1, Lunch = 2, Evening = 4, Night = 8 };
 
     /// <summary>
     /// The taking plan contains all planned takings for a drug. It also contanis the day times (morning, lunch, evening, night) for a taking. If a day time is active, it contains the time for the reminder
