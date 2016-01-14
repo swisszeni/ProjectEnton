@@ -28,7 +28,10 @@
                         <TextBlock Text="Morgen" Width="60"/>
                         <Image Source="/Assets/morning.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="morningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Morning}"/>
+                    <ListView x:Name="morningListView" VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" ItemsSource="{Binding Morning}" 
+                              ItemClick="morningListView_ItemClick" IsItemClickEnabled="True"
+                              SelectionMode="None"/>
                 </StackPanel>
 
                 <StackPanel x:Name="NoonPanel" Margin="0,20,0,0">
@@ -36,7 +39,10 @@
                         <TextBlock Text="Mittag" Width="60"/>
                         <Image Source="/Assets/noon.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="noonListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Noon}"/>
+                    <ListView x:Name="noonListView" VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" ItemsSource="{Binding Noon}"
+                              ItemClick="noonListView_ItemClick" IsItemClickEnabled="True"
+                              SelectionMode="None"/>
                 </StackPanel>
 
                 <StackPanel x:Name="EveningPanel" Margin="0,20,0,0">
@@ -44,7 +50,10 @@
                         <TextBlock Text="Abend" Width="60"/>
                         <Image Source="/Assets/evening.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="eveningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Evening}"/>
+                    <ListView x:Name="eveningListView" VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" ItemsSource="{Binding Evening}"
+                              ItemClick="eveningListView_ItemClick" IsItemClickEnabled="True"
+                              SelectionMode="None"/>
                 </StackPanel> 
 
                 <StackPanel x:Name="NightPanel" Margin="0,20,0,0">
@@ -52,7 +61,10 @@
                         <TextBlock Text="Nacht" Width="60"/>
                         <Image Source="/Assets/night.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="nightListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Night}"/>
+                    <ListView x:Name="nightListView" VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" ItemsSource="{Binding Night}"
+                              ItemClick="nightListView_ItemClick" IsItemClickEnabled="True"
+                              SelectionMode="None"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
