@@ -24,6 +24,9 @@ namespace ProjectEnton
     /// </summary>
     sealed partial class App : Application
     {
+
+        private ApplicationTheme OSTheme;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,6 +36,9 @@ namespace ProjectEnton
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
+            // Save the OS Theme before we override the value
+            OSTheme = this.RequestedTheme;
 
             // Only set requested theme when color is defined. Otherwise use system value
             ElementTheme theme = Models.Settings.Instance.AppTheme;
@@ -69,7 +75,6 @@ namespace ProjectEnton
             // Create the shell
             Shell shell = Window.Current.Content as Shell;
 
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (shell == null)
@@ -87,6 +92,9 @@ namespace ProjectEnton
                 // Place the frame in the current Window
                 Window.Current.Content = shell;
             }
+
+            // Pass the OS theme to the shell
+            shell.OSTheme = OSTheme;
 
             if (shell.AppFrame.Content == null)
             {
