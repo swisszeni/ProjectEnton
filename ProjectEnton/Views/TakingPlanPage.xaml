@@ -28,15 +28,15 @@
                         <TextBlock Text="Morgen" Width="60"/>
                         <Image Source="/Assets/morning.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="morningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
+                    <ListView x:Name="morningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Morning}"/>
                 </StackPanel>
 
-                <StackPanel x:Name="NoonPanel" Margin="0,20,0,0" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="NoonPanel" Margin="0,20,0,0">
+                    <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
                         <TextBlock Text="Mittag" Width="60"/>
                         <Image Source="/Assets/noon.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="noonListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
+                    <ListView x:Name="noonListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Noon}"/>
                 </StackPanel>
 
                 <StackPanel x:Name="EveningPanel" Margin="0,20,0,0">
@@ -44,15 +44,15 @@
                         <TextBlock Text="Abend" Width="60"/>
                         <Image Source="/Assets/evening.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="eveningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
-                </StackPanel>
+                    <ListView x:Name="eveningListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Evening}"/>
+                </StackPanel> 
 
                 <StackPanel x:Name="NightPanel" Margin="0,20,0,0">
                     <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
                         <TextBlock Text="Nacht" Width="60"/>
                         <Image Source="/Assets/night.png" Height="20" Width="20" HorizontalAlignment="Right" Margin="15,0,0,0"/>
                     </StackPanel>
-                    <ListView x:Name="nightListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
+                    <ListView x:Name="nightListView" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Night}"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

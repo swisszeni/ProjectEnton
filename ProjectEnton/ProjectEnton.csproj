@@ -103,10 +103,10 @@
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MediDetails.xaml.cs">
+	<Compile Include="Views\MediDetails.xaml.cs">
       <DependentUpon>MediDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MyDrugsListPage.xaml.cs">
+	<Compile Include="ViewModels\TakingPlanModel.cs" />    <Compile Include="Views\MyDrugsListPage.xaml.cs">
       <DependentUpon>MyDrugsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Drug.cs" />
