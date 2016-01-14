@@ -27,7 +27,19 @@
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
                   ScrollViewer.VerticalScrollMode="Enabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Assets/medi.png" Height="30" Grid.Column="0" Margin="0 0 20 0"/>
+                <TextBlock Text="Dies ist ein Medikament" Grid.Column="1" Margin="0 0 20 0"/>
+                <Image Source="/Assets/bell.png" Height="30" Grid.Column="2"/>
+            </Grid>
+        </ListView>
+
         <AppBar x:Name="InteractionBar" Grid.Row="2" ClosedDisplayMode="Compact">
             <AppBarButton x:Name="AddMedicamentButton" Icon="Add" Label="Medikament hinzufügen" Click="AddMedicamentButton_Click"/>
         </AppBar>

@@ -25,23 +25,23 @@
             <RelativePanel Grid.Row="1" Margin="20">
                 <StackPanel Orientation="Vertical">
                     
-                    <Image Source="/Assets/drug.png" Height="100"/>
-                    <TextBlock Text="Name" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <Image Source="/Assets/drug.png" Height="100" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Name" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="NameBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0" Text="{Binding Name}"/>
 
-                    <TextBlock Text="Wirkstoff" HorizontalAlignment="Left" Margin=" 0 20 0 0"/>
+                    <TextBlock Text="Wirkstoff" FontSize="20" HorizontalAlignment="Left" Margin=" 0 20 0 0"/>
                     <TextBlock x:Name="ContentsBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0" Text="{Binding ActiveComponent}"/>
 
-                    <TextBlock Text="Dosierung" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <TextBlock Text="Dosierung" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="DosageBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0" Text="{Binding Dosage}"/>
 
-                    <TextBlock Text="Form" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <TextBlock Text="Form" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="FormBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0" Text="{Binding MedicationForm}"/>
 
-                    <TextBlock Text="zuletzt eingenommen" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <TextBlock Text="zuletzt eingenommen" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="LastTakenBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0"/>
 
-                    <TextBlock Text="verbleibend" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <TextBlock Text="verbleibend" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="RemainingBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0"/>
                 </StackPanel>
             </RelativePanel>
