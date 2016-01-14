@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace ProjectEnton.Views
 {
     /// <summary>
-    /// 
+    /// This page shows all drugs that that the user has to take or had to take
     /// author: Florian Schnyder
     /// </summary>
     public sealed partial class MyDrugsListPage : Page
