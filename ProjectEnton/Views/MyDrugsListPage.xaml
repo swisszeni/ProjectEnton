@@ -27,7 +27,16 @@
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
                   ScrollViewer.VerticalScrollMode="Enabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ListView>
+        
         <AppBar x:Name="InteractionBar" Grid.Row="2" ClosedDisplayMode="Compact">
             <AppBarButton x:Name="AddMedicamentButton" Icon="Add" Label="Medikament hinzufügen" Click="AddMedicamentButton_Click"/>
         </AppBar>
