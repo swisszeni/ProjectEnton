@@ -35,6 +35,7 @@ namespace ProjectEnton.Views
         private Menu menu = new Menu();
         private bool hasPhysicalBackButton;
         private Settings settings;
+        private ApplicationTheme osTheme;
 
         public static Shell Current = null;
 
@@ -79,11 +80,10 @@ namespace ProjectEnton.Views
         /// </summary>
         public void InitializeVisualState()
         {
-            // Adjusting the TitleBar
-            this.AdjustTitleBarColor();
-
             // Subscribe the AppBar for further Changes in AccentColor
             settings.PropertyChanged += Settings_PropertyChanged;
+
+            this.RequestedTheme = settings.AppTheme;
 
             // If we have no physical back buttons, we display one in the title bar
             if (!hasPhysicalBackButton)
@@ -161,7 +161,19 @@ namespace ProjectEnton.Views
             }
         }
 
-        public ApplicationTheme OSTheme { get; set; }
+        public ApplicationTheme OSTheme {
+            get
+            {
+                return osTheme;
+            }
+
+            set
+            {
+                osTheme = value;
+                // Adjusting the TitleBar
+                this.AdjustTitleBarColor();
+            }
+        }
 
         /// <summary>
         /// Callback method for when the settings have changed. We are especially interested for the theme event
@@ -177,7 +189,7 @@ namespace ProjectEnton.Views
                 if(settings.AppTheme == ElementTheme.Default && !ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
                 {
                     // Yes, now set to the OS theme
-                    this.RequestedTheme = OSTheme == ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+                    this.RequestedTheme = osTheme == ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
                 } else
                 {
                     // No, we just directly assign the theme
@@ -216,7 +228,21 @@ namespace ProjectEnton.Views
             Color titleForegroundColor;
             Color titleButtonHoverColor;
             Color titleButtonPressColor;
-            if (this.RequestedTheme == ElementTheme.Light)
+
+            // catch the case where requestedTheme is default on phone
+            // This can't occur on Desktop as there it is catched earlyer in the chain
+            ElementTheme displayingTheme;
+            if (this.RequestedTheme == ElementTheme.Default)
+            {
+                displayingTheme = osTheme == ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+            }
+            else
+            {
+                displayingTheme = this.RequestedTheme;
+            }
+
+
+            if (displayingTheme == ElementTheme.Light)
             {
                 titleBackgroundColor = titleBarBackgroundColorLight;
                 titleForegroundColor = titleBarForegroundColorLight;
