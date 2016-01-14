@@ -18,6 +18,7 @@ using ProjectEnton.Controls;
 using ProjectEnton.Views;
 using ProjectEnton.Models;
 using Windows.UI.ViewManagement;
+using Windows.UI;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -80,6 +81,9 @@ namespace ProjectEnton.Views
         {
             // Adjusting the TitleBar
             this.AdjustTitleBarColor();
+
+            // Subscribe the AppBar for further Changes in AccentColor
+            settings.PropertyChanged += Settings_PropertyChanged;
 
             // If we have no physical back buttons, we display one in the title bar
             if (!hasPhysicalBackButton)
@@ -157,15 +161,76 @@ namespace ProjectEnton.Views
             }
         }
 
+        public ApplicationTheme OSTheme { get; set; }
+
+        /// <summary>
+        /// Callback method for when the settings have changed. We are especially interested for the theme event
+        /// author: Raphael zenhäusern
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "AppTheme")
+            {
+                // AppTheme changed, first check if it is set to default and on desktop (herefore we assume the statusbar is missing)
+                if(settings.AppTheme == ElementTheme.Default && !ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+                {
+                    // Yes, now set to the OS theme
+                    this.RequestedTheme = OSTheme == ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+                } else
+                {
+                    // No, we just directly assign the theme
+                    this.RequestedTheme = settings.AppTheme;
+                }
+
+                // update titleBar Color
+                this.AdjustTitleBarColor();
+
+            }
+        }
+
         /// <summary>
         /// Adjust the color of the TitleBar or SysytemTray color. Bartype depends on devicetype. Color depends on active theme.
         /// author: Raphael Zenhäusern
         /// </summary>
         private void AdjustTitleBarColor()
         {
-            // Get the same brush the title header uses
-            SolidColorBrush titleBackgroundBrush = this.Resources["SystemControlBackgroundChromeMediumBrush"] as SolidColorBrush;
-            SolidColorBrush titleForegroundBrush = Application.Current.Resources["SystemControlForegroundBaseHighBrush"] as SolidColorBrush;
+            // Hardcode the themespecific colors becaus the brushes will return the wrong value if method is invoked while app is running
+            // Light
+            Color titleBarBackgroundColorLight = this.ColorFromARGBHex("#FFE6E6E6");
+            Color titleBarButtonHoverColorLight = this.ColorFromARGBHex("#FFB3B3B3");
+            Color titleBarButtonPressedColorLight = this.ColorFromARGBHex("#FF9F9F9F");
+
+            Color titleBarForegroundColorLight = Colors.Black;
+
+            // Dark
+            Color titleBarBackgroundColorDark = this.ColorFromARGBHex("#FF1F1F1F");
+            Color titleBarButtonHoverColorDark = this.ColorFromARGBHex("#FF404040");
+            Color titleBarButtonPressedColorDark = this.ColorFromARGBHex("#FF555555");
+
+            Color titleBarForegroundColorDark = Colors.White;
+
+            // Set the colors according to theme
+            Color titleBackgroundColor;
+            Color titleForegroundColor;
+            Color titleButtonHoverColor;
+            Color titleButtonPressColor;
+            if (this.RequestedTheme == ElementTheme.Light)
+            {
+                titleBackgroundColor = titleBarBackgroundColorLight;
+                titleForegroundColor = titleBarForegroundColorLight;
+                titleButtonHoverColor = titleBarButtonHoverColorLight;
+                titleButtonPressColor = titleBarButtonPressedColorLight;
+            } else
+            {
+                titleBackgroundColor = titleBarBackgroundColorDark;
+                titleForegroundColor = titleBarForegroundColorDark;
+                titleButtonHoverColor = titleBarButtonHoverColorDark;
+                titleButtonPressColor = titleBarButtonPressedColorDark;
+            }
+
+
 
             // If App runs on a PC
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
@@ -173,17 +238,17 @@ namespace ProjectEnton.Views
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
-                    SolidColorBrush titleButtonHoverBrush = Application.Current.Resources["SystemControlForegroundChromeHighBrush"] as SolidColorBrush;
-                    SolidColorBrush titleButtonPressBrush = Application.Current.Resources["SystemControlForegroundChromeDisabledLowBrush"] as SolidColorBrush;
 
-                    titleBar.BackgroundColor = titleBackgroundBrush.Color;
-                    titleBar.ForegroundColor = titleForegroundBrush.Color;
-                    titleBar.ButtonBackgroundColor = titleBackgroundBrush.Color;
-                    titleBar.ButtonHoverBackgroundColor = titleButtonHoverBrush.Color;
-                    titleBar.ButtonPressedBackgroundColor = titleButtonPressBrush.Color;
-                    titleBar.ButtonForegroundColor = titleForegroundBrush.Color;
-                    titleBar.ButtonHoverForegroundColor = titleForegroundBrush.Color;
-                    titleBar.ButtonPressedForegroundColor = titleForegroundBrush.Color;
+                    titleBar.BackgroundColor = titleBackgroundColor;
+                    titleBar.InactiveBackgroundColor = titleBackgroundColor;
+                    titleBar.ForegroundColor = titleForegroundColor;
+                    titleBar.ButtonBackgroundColor = titleBackgroundColor;
+                    titleBar.ButtonInactiveBackgroundColor = titleBackgroundColor;
+                    titleBar.ButtonHoverBackgroundColor = titleButtonHoverColor;
+                    titleBar.ButtonPressedBackgroundColor = titleButtonPressColor;
+                    titleBar.ButtonForegroundColor = titleForegroundColor;
+                    titleBar.ButtonHoverForegroundColor = titleForegroundColor;
+                    titleBar.ButtonPressedForegroundColor = titleForegroundColor;
                 }
             }
 
@@ -194,10 +259,39 @@ namespace ProjectEnton.Views
                 if (statusBar != null)
                 {
                     statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = titleBackgroundBrush.Color;
-                    statusBar.ForegroundColor = titleForegroundBrush.Color;
+                    statusBar.BackgroundColor = titleBackgroundColor;
+                    statusBar.ForegroundColor = titleForegroundColor;
                 }
             }
+        }
+
+        /// <summary>
+        /// Helper method to convert ARGB Hex strings into color
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="argbhex"></param>
+        /// <returns></returns>
+        private Color ColorFromARGBHex(string argbhex)
+        {
+            if(argbhex.Length != 9)
+            {
+                // String submittes has wrong length
+                throw new ArgumentException("Ivalid length for hex string submitted.");
+            }
+
+            var color = Windows.UI.Color.FromArgb(
+                Convert.ToByte(argbhex.Substring(1, 2), 16),
+                Convert.ToByte(argbhex.Substring(3, 2), 16),
+                Convert.ToByte(argbhex.Substring(5, 2), 16),
+                Convert.ToByte(argbhex.Substring(7, 2), 16));
+
+            if(color == null)
+            {
+                // Color for some reason not valid, must be invalid string
+                throw new ArgumentException("Ivalid hex string submitted.");
+            }
+
+            return color;
         }
 
         #region BackRequested Handlers
