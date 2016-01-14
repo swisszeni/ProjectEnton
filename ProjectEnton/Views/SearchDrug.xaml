@@ -42,9 +42,7 @@
         </Grid.RowDefinitions>
 
         <controls:PageHeader Grid.Row="0">
-            <controls:PageHeader.HeaderContent>
-                <TextBlock x:Name="Title" Text="MEDIKAMENT SUCHEN" Style="{ThemeResource PageTitleTextBlockStyle}"/>
-            </controls:PageHeader.HeaderContent>
+            <TextBlock x:Name="Title" Text="MEDIKAMENT SUCHEN" Style="{ThemeResource PageTitleTextBlockStyle}"/>
         </controls:PageHeader>
 
         <RelativePanel Grid.Row="1" Margin="20">
