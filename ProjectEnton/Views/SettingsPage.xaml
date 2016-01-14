@@ -10,6 +10,34 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BandSearchInProgressGrid.(RelativePanel.RightOf)" Value="ConnectionMicrosoftBand" />
+                        <Setter Target="BandSearchInProgressGrid.(RelativePanel.AlignVerticalCenterWith)" Value="ConnectionMicrosoftBand" />
+                        <Setter Target="BandSearchInProgressGrid.Margin" Value="20 0 0 0" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="BandSearchInProgressGrid.(RelativePanel.Below)" Value="ConnectionMicrosoftBand" />
+                        <Setter Target="BandSearchInProgressGrid.Margin" Value="0 20 0 0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -21,7 +49,7 @@
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
         
-        <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" Grid.Row="1">
+        <ScrollViewer x:Name="SettingsScrollView" HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" Grid.Row="1">
             <StackPanel>
                 <StackPanel Orientation="Vertical" Margin="20">
                     <TextBlock Text="Hintergrund" FontSize="20" />
@@ -46,7 +74,18 @@
                 <StackPanel Orientation="Vertical" Margin="20">
                     <TextBlock Text="Microsoft Band" FontSize="20" />
                     <TextBlock Text="Verfügen Sie über ein Microsoft Band welches mit diesem Gerät gekoppelt ist? Wenn ja, können Sie hier die Benachrichtigungen für das Band aktivieren." TextWrapping="Wrap" Margin="12"/>
-                    <ToggleSwitch x:Name="ConnectionMicrosoftBand" Toggled="ConnectionMicrosoftBand_Toggled" Margin="12"/>
+                    <RelativePanel Margin="12">
+                        <ToggleSwitch x:Name="ConnectionMicrosoftBand" Toggled="ConnectionMicrosoftBand_Toggled"/>
+                        <Grid x:Name="BandSearchInProgressGrid" Visibility="Collapsed" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <ProgressRing x:Name="BandSearchInProgressRing" Grid.Column="0"/>
+                            <TextBlock Text="Bitte warten Sie, während nach verfügbaren Geräten gesucht wird." Margin="12 0 0 0" TextWrapping="Wrap" Grid.Column="1"/>
+                        </Grid>
+                        <TextBlock x:Name="BandConnectionInfotext" FontWeight="Bold" Visibility="Collapsed" RelativePanel.Below="ConnectionMicrosoftBand" RelativePanel.AlignLeftWith="ConnectionMicrosoftBand" Margin="0 20 0 0"/>
+                    </RelativePanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

@@ -1,8 +1,11 @@
 ﻿using ProjectEnton.Models;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Band;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -22,14 +25,14 @@ namespace ProjectEnton.Views
 
             this.InitializeComponent();
 
-            this.setVisualsFromSettingVars();
+            this.SetVisualsFromSettingVars();
         }
 
         /// <summary>
         /// Sets the values for the views with the settings values
         /// author: Raphael Zenhäusern
         /// </summary>
-        private void setVisualsFromSettingVars()
+        private void SetVisualsFromSettingVars()
         {
             switch (settings.AppTheme)
             {
@@ -50,7 +53,41 @@ namespace ProjectEnton.Views
             EveningTimePicker.Time = settings.DefaultEveningTakingTime;
             NightTimePicker.Time = settings.DefaultNightTakingTime;
 
-            ConnectionMicrosoftBand.IsOn = settings.UseMicrosoftBand;
+            if (settings.UseMicrosoftBand)
+            {
+                ConnectionMicrosoftBand.IsEnabled = false;
+                this.TryRestoringBandVisuals();
+            } else
+            {
+                ConnectionMicrosoftBand.IsOn = false;
+            }
+        }
+
+        private async void TryRestoringBandVisuals()
+        {
+            // Microsoft Band is used, try getting the connection info
+            // Get the Band singleton
+            MicrosoftBand band = MicrosoftBand.Instance;
+
+            // Try getting a Band
+            try
+            {
+                bool bandFound = await band.InitAsync();
+                ConnectionMicrosoftBand.IsOn = bandFound;
+                if(bandFound)
+                {
+                    DisplayBandConnected(band.SelectedBand);
+                }
+            }
+            catch
+            {
+                // Error while retrieving... fuck it
+                ConnectionMicrosoftBand.IsOn = false;
+            }
+            finally
+            {
+                ConnectionMicrosoftBand.IsEnabled = true;
+            }
         }
 
 
@@ -179,7 +216,7 @@ namespace ProjectEnton.Views
         }
 
         /// <summary>
-        /// Actionhandler to set the use of the MS Band in the settings.
+        /// Actionhandler to trigger the use of the MS Band in the settings.
         /// author: Raphael Zenhäusern
         /// </summary>
         /// <param name="sender"></param>
@@ -187,8 +224,116 @@ namespace ProjectEnton.Views
         private void ConnectionMicrosoftBand_Toggled(object sender, RoutedEventArgs e)
         {
             var toggle = sender as ToggleSwitch;
-            settings.UseMicrosoftBand = toggle.IsOn;
+
+            if(toggle.IsOn)
+            {
+                // Ok user activated Use of Band, search for them
+                SearchMicrosoftBandsConnectedAsync();
+            } else
+            {
+                RemoveMicrosoftBand();
+            }
         }
+
+        #region MicrosoftBandLogic
+
+        /// <summary>
+        /// Method to actively search for Bands and connect to one if available
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        private async void SearchMicrosoftBandsConnectedAsync()
+        {
+            // Disable the switch
+            ConnectionMicrosoftBand.IsEnabled = false;
+            // Display the search indicator
+            this.DisplayBandSearchingIndicator(true);
+
+            // Get the Band singleton
+            MicrosoftBand band = MicrosoftBand.Instance;
+
+            // Try getting a Band
+            try
+            {
+                bool bandFound = await band.InitAsync();
+                if(!bandFound)
+                {
+                    // No bands available
+                    DisplayNoBandsFoundAsync();
+                } else
+                {
+                    // Connected to band!
+                    // Set the resource as in use and required
+                    using (IBandClient bandClient = band.BandClient)
+                    {
+                        DisplayBandConnected(band.SelectedBand);
+                        settings.UseMicrosoftBand = true;
+                    }
+                }
+            }
+            catch (BandException ex)
+            {
+                DisplayBandConnectionFailureAsync(ex);
+            } finally
+            {
+                // Enable the switch
+                ConnectionMicrosoftBand.IsEnabled = true;
+            }
+        }
+
+        private void RemoveMicrosoftBand()
+        {
+            // Get the Band singleton
+            MicrosoftBand band = MicrosoftBand.Instance;
+            // Destruct the connection
+            band.Destruct();
+            settings.UseMicrosoftBand = false;
+            BandConnectionInfotext.Visibility = Visibility.Collapsed;
+        }
+
+        private async void DisplayBandConnectionFailureAsync(BandException ex)
+        {
+            var dialog = new MessageDialog("Bei der Verbindung mit dem Microsoft Band ist ein Fehler aufgetreten.", "Fehler bei Verbindung");
+            await dialog.ShowAsync();
+            DisplayBandSearchingIndicator(false);
+            ConnectionMicrosoftBand.IsOn = false;
+        }
+
+        private void DisplayBandConnected(IBandInfo bandInfo)
+        {
+            BandConnectionInfotext.Text = "Verbunden mit " + bandInfo.Name;
+            DisplayBandSearchingIndicator(false);
+            BandConnectionInfotext.Visibility = Visibility.Visible;
+        }
+
+
+        private async void DisplayNoBandsFoundAsync()
+        {
+            var dialog = new MessageDialog("Es wurde kein Microsoft Band gefunden, stellen Sie sicher, dass Bluetooth aktiviert und das Band verbunden ist.", "Nicht gefunden");
+            await dialog.ShowAsync();
+            DisplayBandSearchingIndicator(false);
+            ConnectionMicrosoftBand.IsOn = false;
+        }
+
+        /// <summary>
+        /// Shows or hides the search indicator for Microsoft Band
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="display"></param>
+        private void DisplayBandSearchingIndicator(bool display)
+        {
+            BandSearchInProgressGrid.Visibility = display ? Visibility.Visible : Visibility.Collapsed;
+            BandSearchInProgressRing.IsActive = display;
+
+            // If indicator is shown, Scrolling so Indicator is always visible
+            if(display)
+            {
+                SettingsScrollView.UpdateLayout();
+                SettingsScrollView.ChangeView(0.0f, SettingsScrollView.ScrollableHeight, 1);
+            }
+        }
+
+
+        #endregion
     }
 }
 
