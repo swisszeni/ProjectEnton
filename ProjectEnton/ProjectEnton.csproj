@@ -103,6 +103,7 @@
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\TakingPlanModel.cs" />
     <Compile Include="Views\MyDrugsListPage.xaml.cs">
       <DependentUpon>MyDrugsListPage.xaml</DependentUpon>
     </Compile>
