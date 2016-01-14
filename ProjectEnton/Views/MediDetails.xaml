@@ -35,6 +35,9 @@
                     <TextBlock Text="Dosierung" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBox x:Name="DosageBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0"/>
 
+                    <TextBlock Text="Form" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                    <TextBox x:Name="FormBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0"/>
+
                     <TextBlock Text="zuletzt eingenommen" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBox x:Name="LastTakenBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0"/>
 
