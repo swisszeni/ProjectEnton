@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectEnton.Models;
+using ProjectEnton.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,25 @@ namespace ProjectEnton.Views
     /// </summary>
     public sealed partial class MediDetails : Page
     {
+        
         public MediDetails()
         {
             this.InitializeComponent();
+                                   
+        }
+
+        
+        /// <summary>
+        /// Override the OnNaviagtedTo and checks if a drug object has been sent. If yes, enable data binding between the view and the drug model.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Drug drug = e.Parameter as Drug;
+            if (drug != null)
+            {
+                this.DataContext = new DrugDetailsModel(drug);
+            }
         }
     }
 }

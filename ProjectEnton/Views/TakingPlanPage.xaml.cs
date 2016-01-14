@@ -55,43 +55,78 @@ namespace ProjectEnton.Views
 
             /// Add the lists to the TakingPlanModel constructor and bind it with the DataContext
             this.DataContext = new TakingPlanModel(morning, noon, evening, night);
-
-            ///Older tests, could be reactivated in the future...
-            /* Add the drug to the page (morning, noon and evening)
-            morningListView.Items.Add(dafalgan.drug.ToString());
-            nightListView.Items.Add(dafalgan.drug.ToString());
-            eveningListView.Items.Add(dafalgan.drug.ToString());
-            
-
-            //checks if the flag at the specified position is set. If yes, the durg will be added to the realted list
-            if (dafalgan.takingDayTime.HasFlag(DayTime.Morning))
-            {
-                morningListView.Items.Add(dafalgan.drug.ToString());
-            }
-
-            if (dafalgan.takingDayTime.HasFlag(DayTime.Lunch))
-            {
-                noonListView.Items.Add(dafalgan.drug.ToString());
-            }
-
-            if (dafalgan.takingDayTime.HasFlag(DayTime.Evening))
-            {
-                eveningListView.Items.Add(dafalgan.drug.ToString());
-            }
-
-            if (dafalgan.takingDayTime.HasFlag(DayTime.Night))
-            {
-                nightListView.Items.Add(dafalgan.drug.ToString());
-            }
-
-            // Check if a Listview ist empty. If a view is empty, it won't be displayed
-            if (morningListView.Items.Count == 0) { MorningPanel.Visibility = Visibility.Collapsed; }
-            if (noonListView.Items.Count == 0) { NoonPanel.Visibility = Visibility.Collapsed; }
-            if (eveningListView.Items.Count == 0) { EveningPanel.Visibility = Visibility.Collapsed; }
-            if (nightListView.Items.Count == 0) { NightPanel.Visibility = Visibility.Collapsed; }
-            */
-
+                     
         }
+
+        // The for following methods are handling a click on a specified item in a listview and foward the user to the drug detail page
+        private void morningListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            getToDurgDetailPage(e);
+        }
+
+        private void noonListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            getToDurgDetailPage(e);
+        }
+
+        private void eveningListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            getToDurgDetailPage(e);
+        }
+
+        private void nightListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            getToDurgDetailPage(e);
+        }
+
+        
+        /// <summary>
+        /// This method moves forward to the detial view of a drug. It also provides the drug object to the detail page
+        /// </summary>
+        /// <param name="e"></param>
+        private void getToDurgDetailPage(ItemClickEventArgs e)
+        {
+            var check = (e.ClickedItem as Drug);
+            Drug drug = check;
+
+            Frame.Navigate(typeof(MediDetails), drug);
+        }
+
+        ///Older tests, could be reactivated in the future...
+        /* Add the drug to the page (morning, noon and evening)
+        morningListView.Items.Add(dafalgan.drug.ToString());
+        nightListView.Items.Add(dafalgan.drug.ToString());
+        eveningListView.Items.Add(dafalgan.drug.ToString());
+
+
+        //checks if the flag at the specified position is set. If yes, the durg will be added to the realted list
+        if (dafalgan.takingDayTime.HasFlag(DayTime.Morning))
+        {
+            morningListView.Items.Add(dafalgan.drug.ToString());
+        }
+
+        if (dafalgan.takingDayTime.HasFlag(DayTime.Lunch))
+        {
+            noonListView.Items.Add(dafalgan.drug.ToString());
+        }
+
+        if (dafalgan.takingDayTime.HasFlag(DayTime.Evening))
+        {
+            eveningListView.Items.Add(dafalgan.drug.ToString());
+        }
+
+        if (dafalgan.takingDayTime.HasFlag(DayTime.Night))
+        {
+            nightListView.Items.Add(dafalgan.drug.ToString());
+        }
+
+        // Check if a Listview ist empty. If a view is empty, it won't be displayed
+        if (morningListView.Items.Count == 0) { MorningPanel.Visibility = Visibility.Collapsed; }
+        if (noonListView.Items.Count == 0) { NoonPanel.Visibility = Visibility.Collapsed; }
+        if (eveningListView.Items.Count == 0) { EveningPanel.Visibility = Visibility.Collapsed; }
+        if (nightListView.Items.Count == 0) { NightPanel.Visibility = Visibility.Collapsed; }
+        */
+
     }
 }
 
