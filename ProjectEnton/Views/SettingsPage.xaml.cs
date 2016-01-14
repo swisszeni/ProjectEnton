@@ -63,6 +63,10 @@ namespace ProjectEnton.Views
             }
         }
 
+        /// <summary>
+        /// Initializer to try to reestablish the connection to the Microsoft Band. If not available, ther won't be any errors displayed.
+        /// author: Raphael Zenhäusern
+        /// </summary>
         private async void TryRestoringBandVisuals()
         {
             // Microsoft Band is used, try getting the connection info
@@ -280,6 +284,10 @@ namespace ProjectEnton.Views
             }
         }
 
+        /// <summary>
+        /// Removes the active connection to the Microsoft Band and reflects this in the interface.
+        /// author: Raphael Zenhäusern
+        /// </summary>
         private void RemoveMicrosoftBand()
         {
             // Get the Band singleton
@@ -290,6 +298,11 @@ namespace ProjectEnton.Views
             BandConnectionInfotext.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Utility to display an error for the connection failure to the Band.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="ex"></param>
         private async void DisplayBandConnectionFailureAsync(BandException ex)
         {
             var dialog = new MessageDialog("Bei der Verbindung mit dem Microsoft Band ist ein Fehler aufgetreten.", "Fehler bei Verbindung");
@@ -298,6 +311,11 @@ namespace ProjectEnton.Views
             ConnectionMicrosoftBand.IsOn = false;
         }
 
+        /// <summary>
+        /// Utility to reflect the connected band in the interface.
+        /// author: Raphael Zenhäusern
+        /// </summary>
+        /// <param name="bandInfo"></param>
         private void DisplayBandConnected(IBandInfo bandInfo)
         {
             BandConnectionInfotext.Text = "Verbunden mit " + bandInfo.Name;
@@ -305,7 +323,10 @@ namespace ProjectEnton.Views
             BandConnectionInfotext.Visibility = Visibility.Visible;
         }
 
-
+        /// <summary>
+        /// Utility to display an error if there couldn't be any Microsoft Band found for various reasons.
+        /// author: Raphael Zenhäusern
+        /// </summary>
         private async void DisplayNoBandsFoundAsync()
         {
             var dialog = new MessageDialog("Es wurde kein Microsoft Band gefunden, stellen Sie sicher, dass Bluetooth aktiviert und das Band verbunden ist.", "Nicht gefunden");
