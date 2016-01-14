@@ -40,7 +40,27 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <HyperlinkButton Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="0 0 0 0" Foreground="#008287" Width="85"/>
+                            <StackPanel x:Name="PausePanel" Orientation="Vertical" Margin="0 10 0 0" Padding="10 0 0 0">
+                                <TextBlock Text="von" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                                <TextBox x:Name="fromDateBox" TextWrapping="Wrap" HorizontalAlignment="Left" Width="260" Margin="0 10 20 0"/>
+                                <TextBlock Text="bis" HorizontalAlignment="Left" Margin="0 20 0 0"/>
+                                <TextBox x:Name="toDateBox" HorizontalAlignment="Left" Width="260" TextWrapping="Wrap" Margin="0 10 20 20"/>
+                            </StackPanel>
                         <HyperlinkButton Content="Uhrzeiten anpassen" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Top" Width="162" Foreground="#008287"/>
+                            <StackPanel x:Name="SetTimePanel" Orientation="Horizontal" Margin="0 10 0 0" Padding="10 0 0 0">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Morgen" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Mittag" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Abend" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Nacht" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TimePicker x:Name="morningTimePicker" Margin=" 10 0 0 0"/>
+                                    <TimePicker x:Name="noonTimePicker" Margin=" 10 0 0 0"/>
+                                    <TimePicker x:Name="eveningTimePicker" Margin=" 10 0 0 0"/>
+                                    <TimePicker x:Name="nightTimePicker" Margin=" 10 0 0 0"/>
+                            </StackPanel>
+                            </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="Savebutton" Content="Speichern" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 30 0 0" Background="#008287"/>
