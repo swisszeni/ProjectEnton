@@ -145,7 +145,10 @@
     <None Include="ProjectEnton_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bell.png" />
+    <Content Include="Assets\drug.png" />
     <Content Include="Assets\evening.png" />
+    <Content Include="Assets\medi.png" />
     <Content Include="Assets\morning.png" />
     <Content Include="Assets\night.png" />
     <Content Include="Assets\noon.png" />
