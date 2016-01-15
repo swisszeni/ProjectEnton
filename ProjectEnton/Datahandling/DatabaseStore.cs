@@ -3,6 +3,7 @@ using ProjectEnton.Models;
 using SQLite.Net;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,10 @@ namespace ProjectEnton.Datahandling
             conn.CreateTable<Drug>();
         }
 
-        public async static Task IfNeededUpdateMedDatabaseAsync()
+        public static async Task IfNeededUpdateMedDatabaseAsync()
         {
             // Get the time since last update
-            TimeSpan sinceLastCheck = Settings.Instance.LastDBUpdate - new DateTime();
+            TimeSpan sinceLastCheck = Settings.Instance.LastDBUpdate - DateTime.Today;
             if(sinceLastCheck.Days > 0)
             {
                 PRODUCTPRD[] newmeds = new PRODUCTPRD[0];
@@ -55,6 +56,36 @@ namespace ProjectEnton.Datahandling
                     conn.InsertAll(drugs);
                 }
                 Settings.Instance.LastDBUpdate = DateTime.Today;
+            }
+        }
+
+        public static List<Drug> GetDrugsForNameSubstring(string nameSub)
+        {
+            using (SQLiteConnection conn = DatabaseStore.DatabaseConnection())
+            {
+                try
+                {
+                    return conn.Table<Drug>().Where(d => d.name.StartsWith(nameSub)).ToList();
+                } catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    return null;
+                }
+                
+                /*new SQLiteCommand("SELECT FROM Drugs WHERE name LIKE ?", Comm);
+
+
+
+                conn.Execute("SELECT FROM Drugs WHERE name LIKE ?", nameSub);
+                (from d in conn.Table<Drug>() where d.name == "penis" select d).ToList<Drug>;*/
+            }
+        } 
+
+        public static Drug GetDrugForSwissMedicNumber(int swissmedicNumber)
+        {
+            using (SQLiteConnection conn = DatabaseStore.DatabaseConnection())
+            {
+                return (from d in conn.Table<Drug>() where d.id == swissmedicNumber select d).FirstOrDefault<Drug>();
             }
         }
     }

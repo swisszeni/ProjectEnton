@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectEnton.Datahandling;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,7 +48,8 @@ namespace ProjectEnton.Views
         /// <param name="e"></param>
         private void SearchDrugButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(SearchDrugResults));
+            var result = DatabaseStore.GetDrugsForNameSubstring(DrugsearchTextBox.Text);
+            Frame.Navigate(typeof(SearchDrugResults), result);
         }
     }
 }

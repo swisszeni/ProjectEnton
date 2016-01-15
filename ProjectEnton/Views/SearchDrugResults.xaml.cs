@@ -30,14 +30,20 @@ namespace ProjectEnton.Views
         /// </summary>
         public SearchDrugResults()
         {
-            //Only for tests!!!
-            List<Drug> testList = new List<Drug>();
-            testList.Add(new Drug(1, "Aspirin", 1.5, "Ethanol", "Tablette", null));
-            testList.Add(new Drug(1, "Dafalgan", 2, "Ethanol", "Pulver", null));
-
             this.InitializeComponent();
-            this.DataContext = new SearchDrugResultsModel(testList);
+        }
 
+        /// <summary>
+        /// Override the OnNaviagtedTo and checks if a drug object has been sent. If yes, enable data binding between the view and the drug model.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            List<Drug> resultList = e.Parameter as List<Drug>;
+            if (resultList != null)
+            {
+                this.DataContext = new SearchDrugResultsModel(resultList);
+            }
         }
 
         /// <summary>

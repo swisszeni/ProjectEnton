@@ -20,7 +20,7 @@
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
 
-        <StackPanel Margin="20" Grid.Row="1" Background="Black">
+        <StackPanel Margin="20" Grid.Row="1">
             <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gefundene Medikamente:"></TextBlock>
             <ListView x:Name="ResultList" ItemsSource="{Binding CurrentSearch}" HorizontalAlignment="Left" MaxHeight="400" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
             <StackPanel Orientation="Horizontal">
