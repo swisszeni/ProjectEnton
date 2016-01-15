@@ -28,7 +28,7 @@ namespace ProjectEnton.Datahandling
         public static async Task IfNeededUpdateMedDatabaseAsync()
         {
             // Get the time since last update
-            TimeSpan sinceLastCheck = Settings.Instance.LastDBUpdate - DateTime.Today;
+            TimeSpan sinceLastCheck = DateTime.Today - Settings.Instance.LastDBUpdate;
             if(sinceLastCheck.Days > 0)
             {
                 PRODUCTPRD[] newmeds = new PRODUCTPRD[0];
