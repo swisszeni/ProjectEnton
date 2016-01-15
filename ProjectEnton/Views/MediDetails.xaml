@@ -29,11 +29,12 @@
                     <TextBlock Text="Name" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="NameBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0" Text="{Binding Name}"/>
 
-                    <TextBlock Text="Wirkstoff" FontSize="20" HorizontalAlignment="Left" Margin=" 0 20 0 0"/>
-                    <TextBlock x:Name="ContentsBox" HorizontalAlignment="Left" Width="260" Margin="0 10 0 0" Text="{Binding ActiveComponent}"/>
-
                     <TextBlock Text="Dosierung" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
-                    <TextBlock x:Name="DosageBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0" Text="{Binding Dosage}"/>
+                    <TextBlock x:Name="DosageBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0">
+                        <Run Text="{Binding Dosage}" />
+                        <Run Text=" " />
+                        <Run Text="{Binding DosageUnit}" />
+                    </TextBlock>
 
                     <TextBlock Text="Form" FontSize="20" HorizontalAlignment="Left" Margin="0 20 0 0"/>
                     <TextBlock x:Name="FormBox" HorizontalAlignment="Left" Width="260" Margin=" 0 10 0 0" Text="{Binding MedicationForm}"/>

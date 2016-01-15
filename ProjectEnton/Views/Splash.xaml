@@ -1,0 +1,25 @@
+﻿<Grid
+    x:Class="ProjectEnton.Views.Splash"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjectEnton.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlHighlightAccentBrush}">
+
+    <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition Height="180"/>
+    </Grid.RowDefinitions>
+
+    <Canvas Grid.Row="0" Grid.RowSpan="2">
+        <Image x:Name="extendedSplashImage" Source="ms-appx:///Assets/SplashScreen.scale-200.png"/>
+    </Canvas>
+    <StackPanel Grid.Row="1" x:Name="ProgressInformation" HorizontalAlignment="Center" Visibility="Collapsed">
+        <ProgressRing x:Name="ProgressIndicator" Width="50" Height="50" Foreground="White" />
+        <TextBlock x:Name="ProgressInformationText" TextWrapping="Wrap" TextAlignment="Center" Padding="5" Margin="0 32 0 0" HorizontalAlignment="Center" FontSize="20" Foreground="White">
+       Aktualisiere lokale Datenbank
+        </TextBlock>
+    </StackPanel>
+</Grid>

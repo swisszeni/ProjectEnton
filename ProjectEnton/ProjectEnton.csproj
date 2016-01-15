@@ -93,7 +93,81 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadArticleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadArticle_Proprietary_QuantityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadArticle_WholesalerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadBrevierResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCDSCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCDSDSPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCDSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCodexResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCompanyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadCompendiumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadInsuranceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadInteractionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadKompendium_ImageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadKompendium_ProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadLimitationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadProduct_Proprietary_QuantityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadProduct_Substance_Alternative_QuantityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadServiceProviderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadSubstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadWholesalerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eMediat\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\eMediat\configuration.svcinfo" />
+    <None Include="Service References\eMediat\configuration91.svcinfo" />
     <None Include="project.json" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\eMediat\download.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -103,7 +177,14 @@
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Datahandling\DatabaseStore.cs" />
+    <Compile Include="Datahandling\MedindexWebserviceController.cs" />
     <Compile Include="Models\MicrosoftBand.cs" />
+    <Compile Include="Service References\eMediat\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DrugDetailsModel.cs" />
     <Compile Include="Views\MediDetails.xaml.cs">
       <DependentUpon>MediDetails.xaml</DependentUpon>
@@ -134,6 +215,9 @@
     <Compile Include="ViewModels\SearchDrugResultsModel.cs" />
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TakingPlanPage.xaml.cs">
       <DependentUpon>TakingPlanPage.xaml</DependentUpon>
@@ -221,21 +305,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TakingPlanPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="SQLite.UAP.2015, Version=3.10.1">
+      <Name>SQLite for Universal App Platform</Name>
+    </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.10240.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\eMediat\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

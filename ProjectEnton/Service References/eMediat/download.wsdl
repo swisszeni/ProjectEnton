@@ -1,0 +1,2883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.e-mediat.ch/index" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.e-mediat.ch/index" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.e-mediat.ch/index">
+      <s:element name="DownloadArticleInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ARTICLE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="ART">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="PHAR" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="PHARMACODE" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRPCD">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="M1" />
+                        <s:enumeration value="M9" />
+                        <s:enumeration value="P1" />
+                        <s:enumeration value="P2" />
+                        <s:enumeration value="P9" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="CDSO1" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDSO2" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SMCAT">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="A" />
+                        <s:enumeration value="B" />
+                        <s:enumeration value="C" />
+                        <s:enumeration value="D" />
+                        <s:enumeration value="E" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="SMNO" type="s:long" />
+                  <s:element minOccurs="0" maxOccurs="1" name="HOSPCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CLINCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ARTTYP">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="0" />
+                        <s:enumeration value="1" />
+                        <s:enumeration value="2" />
+                        <s:enumeration value="3" />
+                        <s:enumeration value="4" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="VAT" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SALECD">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="H" />
+                        <s:enumeration value="N" />
+                        <s:enumeration value="P" />
+                        <s:enumeration value="R" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="INSLIM">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="Y" />
+                        <s:enumeration value="N" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="LIMPTS" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRDFR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="0" />
+                        <s:enumeration value="1" />
+                        <s:enumeration value="2" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="COOL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TEMP" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDBG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EXP" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTY" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRLONGD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRLONGF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SORTD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SORTF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTYUD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTYUF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IMG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IMG2" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRPACKD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRPACKF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PCKTYPD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PCKTYPF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MULT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SYN1D" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SYN1F" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SLOPLUS" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NOPCS" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="HSCD">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="1" />
+                        <s:enumeration value="2" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="MINI" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DEPCD">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="Y" />
+                        <s:enumeration value="N" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="DEPOT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BAGSL" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BAGSLC" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LOACD">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="Y" />
+                        <s:enumeration value="N" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="OUTSAL" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STTOX" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NOTI">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="Y" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="GGL">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="Y" />
+                        <s:enumeration value="N" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="CE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SMDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SMCDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SIST" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ESIST" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BIOCID" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BAGNO" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LIGHT" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BAGDOSSIER" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TRADEABLE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="WEIGHT" type="s:double" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTCOMP">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="COMPNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ROLE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ARTNO1" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ARTNO2" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ARTNO3" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTBAR">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CDTYP">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="E8" />
+                              <s:enumeration value="E13" />
+                              <s:enumeration value="E14" />
+                              <s:enumeration value="UPC" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="BC" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="BCSTAT" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PHAR2" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTCH">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="PHAR2" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="CHTYPE">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="REP" />
+                              <s:enumeration value="PAR" />
+                              <s:enumeration value="ORD" />
+                              <s:enumeration value="PRI" />
+                              <s:enumeration value="PIM" />
+                              <s:enumeration value="ORG" />
+                              <s:enumeration value="MPR" />
+                              <s:enumeration value="COM" />
+                              <s:enumeration value="GRF" />
+                              <s:enumeration value="REF" />
+                              <s:enumeration value="SDO" />
+                              <s:enumeration value="KS" />
+                              <s:enumeration value="KS+" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="1" maxOccurs="1" name="LINENO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NOUNITS" type="s:double" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTPRI">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PTYP" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="PRICE" type="s:double" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTMIG">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="MIGCD" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="LINENO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PTYP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="MIGPRI" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="VDATPRI" type="s:dateTime" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTDAN">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="CDTYP" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="LINENO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CDVAL" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTLIM">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="LIMCD" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTINS">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="INCD" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" name="NINCD" type="s:int" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ARTADR">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ADRVAL" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ENVHAZARD" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NETQTY" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NETQTYU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="UNREC" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ADRPACKAGE" type="s:int" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="SIZE">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="WIDTH" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="HEIGHT" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DEPTH" type="s:double" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PIC">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="PTYP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PDAT" type="s:dateTime" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="SDS">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="DE" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="FR" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="IT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EN" type="s:dateTime" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadArticle_Proprietary_QuantityInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ARTICLE_PROPRIETARY_QUANTITY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="APQ">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="PHAR" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTY1" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTYU1" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTY2" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTYU2" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" nillable="true" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadArticle_WholesalerInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ARTICLE_WHOLESALER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="AW">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="WHSNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PLF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PHAR" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STCK" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GSCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RPTYP" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RPCD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RPART" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STCKIN" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RETCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RETDEL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RETPRC" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MINORD" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SIZEX" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SIZEY" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SIZEZ" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="WHSARTCD" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRICD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SEASN" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="VOL" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="WGHT" type="s:double" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="WHSACT">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ACTNO" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ACTCD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ACTSTRT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ACTEND" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="1" name="QDEL" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="QINV" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DISC" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="UPRICE" type="s:double" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="WHSPRI">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="PTYP" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                        <s:element minOccurs="1" maxOccurs="1" name="PRICE" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PDPRI" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="BDPRI" type="s:double" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBrevierInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BREVIER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="BRV">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="MONO" type="s:integer" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CMPD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CMPF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CHRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CHRF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="INDD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="INDF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CINDD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CINDF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="POSD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="POSF" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCodeInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CODE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CD">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="CDTYP" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDVAL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRSD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRSF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRF" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="schemaLocation" type="s:string" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCodexInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CODEX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CDX">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="MONO" type="s:integer" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CMPD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CMPF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CHRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CHRF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="INDD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="INDF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CINDD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CINDF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="POSD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="POSF" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCompanyInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="COMPANY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CP">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="PRTNO" type="s:integer" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAMS" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAML" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADNAM" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STRT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CITY" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CNTRY" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PBOX" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TEL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CNTCT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="WWW" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GLN" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCompendiumInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="COMPENDIUM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CSS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CP">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="MONIDLANG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAME">
+                    <s:complexType mixed="true">
+                      <s:sequence>
+                        <s:any />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="OWNER" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="MONID" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="VERSION" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CONTENT">
+                    <s:complexType mixed="true">
+                      <s:sequence>
+                        <s:any />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PARAGRAPHS">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="TITLE">
+                          <s:complexType mixed="true">
+                            <s:sequence>
+                              <s:any />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                      <s:attribute name="ID" type="s:int" use="required" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="MONTYPE" type="s:string" />
+                <s:attribute name="MONSUBTYPE" type="s:string" />
+                <s:attribute name="LANG" type="s:string" />
+                <s:attribute name="HASPI" type="s:boolean" />
+                <s:attribute name="SAFETYRELEVANT" type="s:boolean" />
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadInsuranceInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="INSURANCE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="INS">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="GLN" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="ROLE">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="H" />
+                        <s:enumeration value="A" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="LANG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DESCR1" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DESCR2" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DIV_GLN" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GROUP_GLN" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ADDR">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="TYPE">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="B" />
+                              <s:enumeration value="P" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="COUNTRY" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STATE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CITY" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STREET" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STRNO" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="POBOX" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="COM">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="ART">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="PHO" />
+                              <s:enumeration value="FAX" />
+                              <s:enumeration value="MOB" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="1" maxOccurs="1" name="CTYPE">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="B" />
+                              <s:enumeration value="P" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="PRECOUNTR" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PREFIX" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NB" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="E_COM">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="ART">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="MAIL" />
+                              <s:enumeration value="WWW" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="1" maxOccurs="1" name="TYPE">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="B" />
+                              <s:enumeration value="P" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="VALUE" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="REFNO">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="CODE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="VALUE" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadInteractionInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="INTERACTION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="IX">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="IXNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRP1D" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRP1F" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRP2D" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GRP2F" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EFFD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EFFF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="RLV" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EFFTXTD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EFFTXTF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MECHD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MECHF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MEASD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MEASF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LIT" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="IXMCH">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="TYP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TYPD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TYPF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CD" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CDD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CDF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TXTD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TXTF" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadKompendium_ProductInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KOMPENDIUM_PRODUCT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="KP">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="MONID" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDTEXTTYPE" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadKompendium_ImageInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KOMPENDIUM_IMAGE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="KI">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="IMAGENAME" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IMAGETYPE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IMAGEURL" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IMAGECDATA" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadLimitationInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LIMITATION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="LIM">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="LIMCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ITBAG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LIMTYP" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LIMVAL" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" nillable="true" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProductInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PRODUCT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="PRD">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRLONGD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRLONGF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BNAMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BNAMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BNAMLONGD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BNAMLONGF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADNAMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADNAMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADNAMLONGD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADNAMLONGF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SIZE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADINFD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADINFF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADINFLONGD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ADINFLONGF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRSWISSMEDICD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DSCRSWISSMEDICF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GENCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" default="" name="GENGRP" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ATC" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="IT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ITBAG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="KONO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TRADE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDBRAND" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDBRANDSUB" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRTNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRTNO2" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MONO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDGALD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDGALF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="FORMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="FORMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DOSE" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DOSEU" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DRGFD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DRGFF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ORPH" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BIOPHA" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BIOSIM">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="R" />
+                        <s:enumeration value="S" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="BFS" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BLOOD" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" default="" name="MSCD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRDIXREL" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDS" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SYND" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SYNF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="KP" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BFSDATA" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DRGPRICEY" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QAP" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BFSDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="BFSCDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DRGPRICEYDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DRGPRICEYCDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MDCLASS" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MDNB" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CDSMODULES" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SMNR" type="s:integer" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SMCAT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHA" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHADAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHACDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHAPRICEY" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHAPRICEYDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STREHAPRICEYCDAT" type="s:dateTime" />
+                  <s:element minOccurs="0" maxOccurs="1" name="EXPORTONLY" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LTC_ASC" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="CPT">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CPTLNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CNAMED" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CNAMEF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="IDXIND" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DDDD" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DDDU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DDDA" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="IDXIA" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="IXREL" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="GALF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DRGGRPCD">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="AN" />
+                              <s:enumeration value="CL" />
+                              <s:enumeration value="HM" />
+                              <s:enumeration value="MD" />
+                              <s:enumeration value="PT" />
+                              <s:enumeration value="TE" />
+                              <s:enumeration value="VE" />
+                              <s:enumeration value="LM" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="PRDGRPCD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PRBSUIT" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CSOLV" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="1" name="SOLVQ" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="SOLVQU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PHVAL" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LSPNSOL" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="APDURSOL" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EXCIP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EXCIPQ" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EXCIPCD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EXCIPCF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PQTY" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PQTYU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="SIZEMM" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" name="WEIGHT" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LOOKD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LOOKF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="IMG2" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="CPTCMP">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="LINE" type="s:int" />
+                              <s:element minOccurs="1" maxOccurs="1" name="SUBNO" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="QTY" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="QTYU" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="WHK" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="CPTIX">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="IXNO" type="s:int" />
+                              <s:element minOccurs="1" maxOccurs="1" name="GRP" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="RLV" type="s:int" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="CPTROA">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="0" maxOccurs="1" name="SYSLOC" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="ROA" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PRDICD">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ICD" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="RTYP">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="I" />
+                              <s:enumeration value="CI" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="RSIG">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="A" />
+                              <s:enumeration value="R" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="GSASA">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ISCRUSHABLE" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CRUSHABLEREMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CRUSHABLEREMF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ISSUSPENDABLE" type="s:boolean" />
+                        <s:element minOccurs="0" maxOccurs="1" name="SUSPENDABLEREMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="SUSPENDABLEREMF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ALTERNATIVESD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ALTERNATIVESF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="EVIDENCELEVEL" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REFERENCES" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProduct_Proprietary_QuantityInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PRODUCT_PROPRIETARY_QUANTITY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="PQ">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CPTLNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="LNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STDQTY" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STDQTYU" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRPQTY" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PRPQTYU" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DIV" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" nillable="true" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProduct_Substance_Alternative_QuantityInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PRODUCT_SUBSTANCE_ALTERNATIVE_QUANTITY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="PAQ">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="CPTLNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="SUBNO" nillable="true" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="CLNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="SBLNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="QULNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTY" type="s:double" />
+                  <s:element minOccurs="0" maxOccurs="1" name="QTYU" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NSFLAG" type="s:boolean" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" nillable="true" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadServiceProviderInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SERVICEPROVIDER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="SP">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="SPTYPE">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="H" />
+                        <s:enumeration value="D" />
+                        <s:enumeration value="P" />
+                        <s:enumeration value="O" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="CDNAT" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="GLN" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="STATUS">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="A" />
+                        <s:enumeration value="R" />
+                        <s:enumeration value="D" />
+                        <s:enumeration value="" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="LANG" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITLE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DESCR1" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DESCR2" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="SEX" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ADDR">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CAT">
+                          <s:simpleType>
+                            <s:restriction base="s:string">
+                              <s:enumeration value="B" />
+                              <s:enumeration value="P" />
+                            </s:restriction>
+                          </s:simpleType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="1" name="APPENDIX" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STREET" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STRNO" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="POBOX" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CITY" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="STATE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="COUNTRY" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ADRNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="VDAT" type="s:dateTime" />
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="ADDR_COM">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="CAT">
+                                <s:simpleType>
+                                  <s:restriction base="s:string">
+                                    <s:enumeration value="B" />
+                                    <s:enumeration value="P" />
+                                  </s:restriction>
+                                </s:simpleType>
+                              </s:element>
+                              <s:element minOccurs="1" maxOccurs="1" name="TYPE">
+                                <s:simpleType>
+                                  <s:restriction base="s:string">
+                                    <s:enumeration value="PHO" />
+                                    <s:enumeration value="FAX" />
+                                    <s:enumeration value="MOB" />
+                                  </s:restriction>
+                                </s:simpleType>
+                              </s:element>
+                              <s:element minOccurs="0" maxOccurs="1" name="PRECOUNTR" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="PREFIX" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="NO" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="E123" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="ADDR_ECOM">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="CAT">
+                                <s:simpleType>
+                                  <s:restriction base="s:string">
+                                    <s:enumeration value="B" />
+                                    <s:enumeration value="P" />
+                                  </s:restriction>
+                                </s:simpleType>
+                              </s:element>
+                              <s:element minOccurs="1" maxOccurs="1" name="TYPE">
+                                <s:simpleType>
+                                  <s:restriction base="s:string">
+                                    <s:enumeration value="MAIL" />
+                                    <s:enumeration value="WWW" />
+                                  </s:restriction>
+                                </s:simpleType>
+                              </s:element>
+                              <s:element minOccurs="0" maxOccurs="1" name="VALUE" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="REFNO">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="CODE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="VALUE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NOTE" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="NDA">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="STATE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NDATYPE" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="ROLES">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ROLECODE" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSubstanceInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SUBSTANCE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="SB">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="SUBNO" type="s:integer" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ANAMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="NAML" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ABDANO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CAS" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MMASS" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="FORMULA" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadWholesalerInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WHOLESALER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="WHS">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="WHSNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PLF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="WHSNAME" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="PLFNAME" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCDSInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CDSPRD">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="PRDNO" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PRDCCH">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" name="CCHKEY" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="CCHTYP" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" name="RLV" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="MEASCD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REME" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DATASC" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="CCHDSP">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="DSPLNO" type="s:int" />
+                              <s:element minOccurs="1" maxOccurs="1" name="DSPNO" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="DSPLG" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REME" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PRDDSM">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CPTLNO" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="AGEFR" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="AGEFRU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="AGETO" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="AGETOU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="WGHFR" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="WGHFRU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="WGHTO" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="WGHTOU" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TITLED" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TITLEF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TITLEE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DATASC" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="DSMDOS">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="DOSLNO" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="DSMTYP" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="NOTNAM" type="s:boolean" />
+                              <s:element minOccurs="0" maxOccurs="1" name="ATFLAG" type="s:boolean" />
+                              <s:element minOccurs="0" maxOccurs="1" name="SUBNO" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REME" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="unbounded" name="DOSUNIT">
+                                <s:complexType>
+                                  <s:sequence>
+                                    <s:element minOccurs="1" maxOccurs="1" name="UNITLNO" type="s:int" />
+                                    <s:element minOccurs="1" maxOccurs="1" name="MAXDQ" type="s:double" />
+                                    <s:element minOccurs="0" maxOccurs="1" name="MAXDU" type="s:string" />
+                                  </s:sequence>
+                                </s:complexType>
+                              </s:element>
+                              <s:element minOccurs="0" maxOccurs="unbounded" name="DOSDSP">
+                                <s:complexType>
+                                  <s:sequence>
+                                    <s:element minOccurs="1" maxOccurs="1" name="DSPLNO" type="s:int" />
+                                    <s:element minOccurs="1" maxOccurs="1" name="DSPNO" type="s:int" />
+                                    <s:element minOccurs="0" maxOccurs="1" name="DSPLG" type="s:string" />
+                                    <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                                    <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                                    <s:element minOccurs="0" maxOccurs="1" name="REME" type="s:string" />
+                                  </s:sequence>
+                                </s:complexType>
+                              </s:element>
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="PRDDSK">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CPTLNO" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NAMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="NAMF" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="ACTMET" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="Q0" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="HVP" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DOSINT" type="s:double" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PRODRG" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DATASC" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="unbounded" name="DSKDSP">
+                          <s:complexType>
+                            <s:sequence>
+                              <s:element minOccurs="1" maxOccurs="1" name="DSPLNO" type="s:int" />
+                              <s:element minOccurs="1" maxOccurs="1" name="DSPNO" type="s:int" />
+                              <s:element minOccurs="0" maxOccurs="1" name="DSPLG" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                              <s:element minOccurs="0" maxOccurs="1" name="REME" type="s:string" />
+                            </s:sequence>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCDSCodeInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CDSCODE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="CCH">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="CCHKEY" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="CCHTYP" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="ISCODE" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="STATE" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="SEX" type="s:int" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="CCHCCH">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" name="CCHKEY2" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="RTYP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMD" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMF" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCDSDSPInput" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INDEX" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FROMDATE" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="FILTER">
+              <s:simpleType>
+                <s:restriction base="s:string">
+                  <s:enumeration value="A" />
+                  <s:enumeration value="D" />
+                  <s:enumeration value="ALL" />
+                </s:restriction>
+              </s:simpleType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CDSDSP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="DSP">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="DSPNO" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITLED" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITLEF" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TITLEE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="DATASC" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" name="DEL" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="DSPTXT">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LANG" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PTITLE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TXT" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="TXTHTML" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="DSPDOC">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LANG" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PTITLE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DOCTYP" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DOCDATA" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="DOCDATE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMARK" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="DSPLNK">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="LNO" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" name="LANG" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="PTITLE" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" name="REMARK" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="DT" type="s:dateTime" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="RESULT">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="OK_ERROR">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="OK" />
+                        <s:enumeration value="ERROR" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="NBR_RECORD" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" name="MESSAGE" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CREATION_DATETIME" type="s:dateTime" use="required" />
+          <s:attribute name="PROD_DATE" type="s:dateTime" use="required" />
+          <s:attribute name="VALID_DATE" type="s:dateTime" use="required" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DownloadArticleSoapIn">
+    <wsdl:part name="input" element="tns:DownloadArticleInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadArticleSoapOut">
+    <wsdl:part name="DownloadArticleResult" element="tns:ARTICLE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadArticle_Proprietary_QuantitySoapIn">
+    <wsdl:part name="input" element="tns:DownloadArticle_Proprietary_QuantityInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadArticle_Proprietary_QuantitySoapOut">
+    <wsdl:part name="DownloadArticle_Proprietary_QuantityResult" element="tns:ARTICLE_PROPRIETARY_QUANTITY" />
+  </wsdl:message>
+  <wsdl:message name="DownloadArticle_WholesalerSoapIn">
+    <wsdl:part name="input" element="tns:DownloadArticle_WholesalerInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadArticle_WholesalerSoapOut">
+    <wsdl:part name="DownloadArticle_WholesalerResult" element="tns:ARTICLE_WHOLESALER" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBrevierSoapIn">
+    <wsdl:part name="input" element="tns:DownloadBrevierInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBrevierSoapOut">
+    <wsdl:part name="DownloadBrevierResult" element="tns:BREVIER" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCodeSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCodeInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCodeSoapOut">
+    <wsdl:part name="DownloadCodeResult" element="tns:CODE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCodexSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCodexInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCodexSoapOut">
+    <wsdl:part name="DownloadCodexResult" element="tns:CODEX" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCompanySoapIn">
+    <wsdl:part name="input" element="tns:DownloadCompanyInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCompanySoapOut">
+    <wsdl:part name="DownloadCompanyResult" element="tns:COMPANY" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCompendiumSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCompendiumInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCompendiumSoapOut">
+    <wsdl:part name="DownloadCompendiumResult" element="tns:COMPENDIUM" />
+  </wsdl:message>
+  <wsdl:message name="DownloadInsuranceSoapIn">
+    <wsdl:part name="input" element="tns:DownloadInsuranceInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadInsuranceSoapOut">
+    <wsdl:part name="DownloadInsuranceResult" element="tns:INSURANCE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadInteractionSoapIn">
+    <wsdl:part name="input" element="tns:DownloadInteractionInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadInteractionSoapOut">
+    <wsdl:part name="DownloadInteractionResult" element="tns:INTERACTION" />
+  </wsdl:message>
+  <wsdl:message name="DownloadKompendium_ProductSoapIn">
+    <wsdl:part name="input" element="tns:DownloadKompendium_ProductInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadKompendium_ProductSoapOut">
+    <wsdl:part name="DownloadKompendium_ProductResult" element="tns:KOMPENDIUM_PRODUCT" />
+  </wsdl:message>
+  <wsdl:message name="DownloadKompendium_ImageSoapIn">
+    <wsdl:part name="input" element="tns:DownloadKompendium_ImageInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadKompendium_ImageSoapOut">
+    <wsdl:part name="DownloadKompendium_ImageResult" element="tns:KOMPENDIUM_IMAGE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLimitationSoapIn">
+    <wsdl:part name="input" element="tns:DownloadLimitationInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLimitationSoapOut">
+    <wsdl:part name="DownloadLimitationResult" element="tns:LIMITATION" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProductSoapIn">
+    <wsdl:part name="input" element="tns:DownloadProductInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProductSoapOut">
+    <wsdl:part name="DownloadProductResult" element="tns:PRODUCT" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduct_Proprietary_QuantitySoapIn">
+    <wsdl:part name="input" element="tns:DownloadProduct_Proprietary_QuantityInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduct_Proprietary_QuantitySoapOut">
+    <wsdl:part name="DownloadProduct_Proprietary_QuantityResult" element="tns:PRODUCT_PROPRIETARY_QUANTITY" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduct_Substance_Alternative_QuantitySoapIn">
+    <wsdl:part name="input" element="tns:DownloadProduct_Substance_Alternative_QuantityInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduct_Substance_Alternative_QuantitySoapOut">
+    <wsdl:part name="DownloadProduct_Substance_Alternative_QuantityResult" element="tns:PRODUCT_SUBSTANCE_ALTERNATIVE_QUANTITY" />
+  </wsdl:message>
+  <wsdl:message name="DownloadServiceProviderSoapIn">
+    <wsdl:part name="input" element="tns:DownloadServiceProviderInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadServiceProviderSoapOut">
+    <wsdl:part name="DownloadServiceProviderResult" element="tns:SERVICEPROVIDER" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSubstanceSoapIn">
+    <wsdl:part name="input" element="tns:DownloadSubstanceInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSubstanceSoapOut">
+    <wsdl:part name="DownloadSubstanceResult" element="tns:SUBSTANCE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadWholesalerSoapIn">
+    <wsdl:part name="input" element="tns:DownloadWholesalerInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadWholesalerSoapOut">
+    <wsdl:part name="DownloadWholesalerResult" element="tns:WHOLESALER" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCDSInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSSoapOut">
+    <wsdl:part name="DownloadCDSResult" element="tns:CDS" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSCodeSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCDSCodeInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSCodeSoapOut">
+    <wsdl:part name="DownloadCDSCodeResult" element="tns:CDSCODE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSDSPSoapIn">
+    <wsdl:part name="input" element="tns:DownloadCDSDSPInput" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCDSDSPSoapOut">
+    <wsdl:part name="DownloadCDSDSPResult" element="tns:CDSDSP" />
+  </wsdl:message>
+  <wsdl:portType name="downloadSoap">
+    <wsdl:operation name="DownloadArticle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadArticle_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadArticleSoapIn" />
+      <wsdl:output message="tns:DownloadArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Proprietary_Quantity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadArticle_Proprietary_Quantity_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadArticle_Proprietary_QuantitySoapIn" />
+      <wsdl:output message="tns:DownloadArticle_Proprietary_QuantitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Wholesaler">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadArticle_Wholesaler_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadArticle_WholesalerSoapIn" />
+      <wsdl:output message="tns:DownloadArticle_WholesalerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBrevier">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadBrevier_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadBrevierSoapIn" />
+      <wsdl:output message="tns:DownloadBrevierSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCode_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCodeSoapIn" />
+      <wsdl:output message="tns:DownloadCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCodex">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCodex_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCodexSoapIn" />
+      <wsdl:output message="tns:DownloadCodexSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompany">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCompany_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCompanySoapIn" />
+      <wsdl:output message="tns:DownloadCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompendium">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCompendium_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCompendiumSoapIn" />
+      <wsdl:output message="tns:DownloadCompendiumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInsurance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadInsurance_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadInsuranceSoapIn" />
+      <wsdl:output message="tns:DownloadInsuranceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInteraction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadInteraction_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadInteractionSoapIn" />
+      <wsdl:output message="tns:DownloadInteractionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Product">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadKompendium_Product_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadKompendium_ProductSoapIn" />
+      <wsdl:output message="tns:DownloadKompendium_ProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Image">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadKompendium_Image_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadKompendium_ImageSoapIn" />
+      <wsdl:output message="tns:DownloadKompendium_ImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLimitation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadLimitation_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadLimitationSoapIn" />
+      <wsdl:output message="tns:DownloadLimitationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadProduct_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProductSoapIn" />
+      <wsdl:output message="tns:DownloadProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Proprietary_Quantity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadProduct_Proprietary_Quantity_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProduct_Proprietary_QuantitySoapIn" />
+      <wsdl:output message="tns:DownloadProduct_Proprietary_QuantitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Substance_Alternative_Quantity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadProduct_Substance_Alternative_Quantity_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProduct_Substance_Alternative_QuantitySoapIn" />
+      <wsdl:output message="tns:DownloadProduct_Substance_Alternative_QuantitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadServiceProvider">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadServiceProvider_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadServiceProviderSoapIn" />
+      <wsdl:output message="tns:DownloadServiceProviderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSubstance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadSubstance_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSubstanceSoapIn" />
+      <wsdl:output message="tns:DownloadSubstanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadWholesaler">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadWholesaler_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadWholesalerSoapIn" />
+      <wsdl:output message="tns:DownloadWholesalerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCDS_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCDSSoapIn" />
+      <wsdl:output message="tns:DownloadCDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCDSCode_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCDSCodeSoapIn" />
+      <wsdl:output message="tns:DownloadCDSCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSDSP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Input:&lt;/b&gt; Click &lt;a href='Schemas/IN/Download_in.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Input Data.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Schema Output:&lt;/b&gt; Click &lt;a href='Schemas/OUT/DownloadCDSDSP_out.xsd'&gt;here&lt;/a&gt; to open the XML Schema (XSD) validation file for the Output Data.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCDSDSPSoapIn" />
+      <wsdl:output message="tns:DownloadCDSDSPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="downloadSoap" type="tns:downloadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadArticle">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Proprietary_Quantity">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle_Proprietary_Quantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Wholesaler">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle_Wholesaler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBrevier">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadBrevier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCode">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCodex">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCodex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompany">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompendium">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCompendium" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInsurance">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadInsurance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInteraction">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadInteraction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Product">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadKompendium_Product" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Image">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadKompendium_Image" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLimitation">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadLimitation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Proprietary_Quantity">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct_Proprietary_Quantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Substance_Alternative_Quantity">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct_Substance_Alternative_Quantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadServiceProvider">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadServiceProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSubstance">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadSubstance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadWholesaler">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadWholesaler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDS">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSCode">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCDSCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSDSP">
+      <soap:operation soapAction="http://www.e-mediat.ch/index/DownloadCDSDSP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="downloadSoap12" type="tns:downloadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadArticle">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Proprietary_Quantity">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle_Proprietary_Quantity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadArticle_Wholesaler">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadArticle_Wholesaler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBrevier">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadBrevier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCode">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCodex">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCodex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompany">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCompendium">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCompendium" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInsurance">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadInsurance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadInteraction">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadInteraction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Product">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadKompendium_Product" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadKompendium_Image">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadKompendium_Image" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLimitation">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadLimitation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Proprietary_Quantity">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct_Proprietary_Quantity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduct_Substance_Alternative_Quantity">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadProduct_Substance_Alternative_Quantity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadServiceProvider">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadServiceProvider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSubstance">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadSubstance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadWholesaler">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadWholesaler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDS">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSCode">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCDSCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCDSDSP">
+      <soap12:operation soapAction="http://www.e-mediat.ch/index/DownloadCDSDSP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="download">
+    <wsdl:port name="downloadSoap" binding="tns:downloadSoap">
+      <soap:address location="https://index.hcisolutions.ch/index/current/download.asmx" />
+    </wsdl:port>
+    <wsdl:port name="downloadSoap12" binding="tns:downloadSoap12">
+      <soap12:address location="https://index.hcisolutions.ch/index/current/download.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -64,19 +64,19 @@ namespace ProjectEnton.ViewModels
 
         }
 
-        public string ActiveComponent
+        public string DosageUnit
         {
-            get { return drug.activeComponent; }
+            get { return drug.dosageUnit; }
             set
             {
-                if (drug.activeComponent == value)
+                if (drug.dosageUnit == value)
                 {
                     return;
                 }
                 else
                 {
-                    drug.activeComponent = value;
-                    OnPropertyChanged("ActiveComponent");
+                    drug.dosageUnit = value;
+                    OnPropertyChanged("DosageUnit");
                 }
 
             }
@@ -118,22 +118,22 @@ namespace ProjectEnton.ViewModels
             }
         }
 
-        public Picture Picture
-        {
-            get { return drug.picture; }
-            set
-            {
-                if (drug.picture == value)
-                {
-                    return;
-                }
-                else
-                {
-                    drug.picture = value;
-                    OnPropertyChanged("Picture");
-                }
+        //public Picture Picture
+        //{
+        //    get { return drug.picture; }
+        //    set
+        //    {
+        //        if (drug.picture == value)
+        //        {
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            drug.picture = value;
+        //            OnPropertyChanged("Picture");
+        //        }
 
-            }
-        }
+        //    }
+        //}
     }
 }

@@ -14,10 +14,10 @@ namespace ProjectEnton.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public string activeComponent { get; set; }
         public double dosage { get; set; }
+        public string dosageUnit { get; set; }
         public string medicationForm { get; set; }
-        public Picture picture { get; set; }
+        // public Picture picture { get; set; }
 
         /// <summary>
         /// This constructor creates an object with the drugs name, its active component, the medication form and a picture
@@ -28,14 +28,14 @@ namespace ProjectEnton.Models
         /// <param name="dosage">Shows the user the dosage of the needed drug</param>
         /// <param name="medicationForm">Contains the infomation of the drugs form (powder....)</param>
         /// <param name="picture"></param>
-        public Drug(int id, string name, string activeComponent, double dosage, string medicationForm, Picture picture)
+        public Drug(int id, string name, double dosage, string dosageUnit, string medicationForm, Picture picture)
         {
             this.id = id;
             this.name = name;
-            this.activeComponent = activeComponent;
             this.dosage = dosage;
+            this.dosageUnit = dosageUnit;
             this.medicationForm = medicationForm;
-            this.picture = picture;
+            //this.picture = picture;
         }
 
         /// <summary>

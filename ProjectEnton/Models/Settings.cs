@@ -29,6 +29,7 @@ namespace ProjectEnton.Models
         private TimeSpan defaultNightTakingTime { get; set; }
         private ElementTheme appTheme;
         private bool useMicrosoftBand { get; set; }
+        private DateTime lastDBUpdate { get; set; }
 
         /// <summary>
         /// Constructor marked private for singleton instance. Instanciates the setting vars from the file system.
@@ -39,6 +40,10 @@ namespace ProjectEnton.Models
             this.appTheme = ApplicationData.Current.LocalSettings.Values.ContainsKey("AppTheme")
                             ? (ElementTheme)ApplicationData.Current.LocalSettings.Values["AppTheme"]
                             : ElementTheme.Default;
+            
+            this.lastDBUpdate = ApplicationData.Current.LocalSettings.Values.ContainsKey("LastDBUpdate")
+                            ? DateTime.ParseExact((string)ApplicationData.Current.LocalSettings.Values["LastDBUpdate"], "yyyy-dd-MM", System.Globalization.CultureInfo.InvariantCulture)
+                            : new DateTime(2000, 1, 1);
 
             this.defaultMorningTakingTime = ApplicationData.Current.LocalSettings.Values.ContainsKey("DefaultMorningTakingTime")
                 ? (TimeSpan)ApplicationData.Current.LocalSettings.Values["DefaultMorningTakingTime"]
@@ -97,6 +102,20 @@ namespace ProjectEnton.Models
                 ApplicationData.Current.LocalSettings.Values["AppTheme"] = (int)value;
                 this.appTheme = value;
                 this.OnPropertyChanged();
+            }
+        }
+
+        public DateTime LastDBUpdate
+        {
+            get
+            {
+                return this.lastDBUpdate;
+            }
+
+            set
+            {
+                ApplicationData.Current.LocalSettings.Values["LastDBUpdate"] = value.ToString("yyyy-dd-MM", System.Globalization.CultureInfo.InvariantCulture);
+                this.lastDBUpdate = value;
             }
         }
 

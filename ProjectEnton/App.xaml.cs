@@ -63,34 +63,27 @@ namespace ProjectEnton
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
+            if (e.PreviousExecutionState != ApplicationExecutionState.Running)
             {
-                // this.DebugSettings.EnableFrameRateCounter = true;
+                bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+                Shell shell = InitializeShell(e);
+                Splash extendedSplash = new Splash(e.SplashScreen, shell, loadState);
+                Window.Current.Content = extendedSplash;
             }
-#endif
 
+            Window.Current.Activate();
+        }
 
-            // Create the shell
-            Shell shell = Window.Current.Content as Shell;
+        private Shell InitializeShell(LaunchActivatedEventArgs e)
+        {
+            // Create a Frame to act as the navigation context and navigate to the first page
+            Shell shell = new Shell();
 
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (shell == null)
+            shell.AppFrame.NavigationFailed += OnNavigationFailed;
+
+            if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                shell = new Shell();
-
-                shell.AppFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
-
-                // Place the frame in the current Window
-                Window.Current.Content = shell;
+                //TODO: Load state from previously suspended application
             }
 
             // Pass the OS theme to the shell
@@ -102,8 +95,7 @@ namespace ProjectEnton
                 shell.AppFrame.Navigate(typeof(MyDrugsListPage), e.Arguments);
             }
 
-            // Ensure the current window is active
-            Window.Current.Activate();
+            return shell;
         }
 
         /// <summary>

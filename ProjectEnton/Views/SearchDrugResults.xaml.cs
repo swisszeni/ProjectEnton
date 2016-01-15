@@ -32,8 +32,8 @@ namespace ProjectEnton.Views
         {
             //Only for tests!!!
             List<Drug> testList = new List<Drug>();
-            testList.Add(new Drug(1, "Aspirin", "Ethanol", 1.5, "Tablette", null));
-            testList.Add(new Drug(1, "Dafalgan", "Ethanol", 2, "Pulver", null));
+            testList.Add(new Drug(1, "Aspirin", 1.5, "Ethanol", "Tablette", null));
+            testList.Add(new Drug(1, "Dafalgan", 2, "Ethanol", "Pulver", null));
 
             this.InitializeComponent();
             this.DataContext = new SearchDrugResultsModel(testList);

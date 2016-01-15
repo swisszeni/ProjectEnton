@@ -20,8 +20,6 @@ using ProjectEnton.Models;
 using Windows.UI.ViewManagement;
 using Windows.UI;
 
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
-
 namespace ProjectEnton.Views
 {
     /// <summary>
