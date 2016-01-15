@@ -41,17 +41,17 @@ namespace ProjectEnton.Views
             List<Drug> night = new List<Drug>();
             
             
-            Drug morgen = new Drug(2, "Medi für Morgen", 2, "Ethanol", "Pulver", null);
+            Drug morgen = new Drug(2, " Dafalgan", 2, "Paracetamol ", "Tablette", null);
             morning.Add(morgen);
 
-            Drug mittag = new Drug(2, "Medi für Mittag", 2, "Malz", "Tablette", null);
-            noon.Add(mittag);
+         /*   Drug mittag = new Drug(2, "Dafalgan", 2, "Paracetamol ", "Tablette", null);
+            noon.Add(mittag);*/
 
-            Drug abend = new Drug(2, "Medi für Abend",  2, "Hopfen", "Lösung", null);
+            Drug abend = new Drug(2, "Dafalgan", 2, "Paracetamol ", "Tablette", null);
             evening.Add(abend);
 
-            Drug nacht = new Drug(2, "Medi für Nacht", 2, "Gärste", "Tablette", null);
-            night.Add(nacht);
+         /* Drug nacht = new Drug(2, "Medi für Nacht", 2, "Gärste", "Tablette", null);
+            night.Add(nacht);*/
 
             /// Add the lists to the TakingPlanModel constructor and bind it with the DataContext
             this.DataContext = new TakingPlanModel(morning, noon, evening, night);
