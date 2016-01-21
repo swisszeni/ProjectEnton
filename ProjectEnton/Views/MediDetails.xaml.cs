@@ -20,7 +20,8 @@ using Windows.UI.Xaml.Navigation;
 namespace ProjectEnton.Views
 {
     /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
+    /// Loads the drug detail page
+    /// author: Florian Schnyder
     /// </summary>
     public sealed partial class MediDetails : Page
     {
@@ -34,6 +35,7 @@ namespace ProjectEnton.Views
         
         /// <summary>
         /// Override the OnNaviagtedTo and checks if a drug object has been sent. If yes, enable data binding between the view and the drug model.
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)

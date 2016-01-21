@@ -18,6 +18,7 @@ namespace ProjectEnton.ViewModels
 
         /// <summary>
         /// The constructor saves the given list of drugs in a local variable
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="drugs"></param>
         public SearchDrugResultsModel(List<Drug> drugs)
@@ -43,6 +44,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// get: Return the current list. 
         /// set: If the list is equal, no changes will be done. Otherwise the new list will be saved
+        /// author: Florian Schnyder
         /// </summary>
         public List<Drug> CurrentSearch
         {

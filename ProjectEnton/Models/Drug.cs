@@ -21,6 +21,7 @@ namespace ProjectEnton.Models
 
         /// <summary>
         /// This constructor creates an object with the drugs name, its active component, the medication form and a picture
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="id">Contanis the drugs id. Uniqe identifier</param>
         /// <param name="name">Contains the drugs name</param>
@@ -45,6 +46,7 @@ namespace ProjectEnton.Models
 
         /// <summary>
         /// To display only the name of a durg, the ToString method has been overridden
+        /// author: Florian Schnyder
         /// </summary>
         /// <returns>the drugs name</returns>
         public override string ToString()

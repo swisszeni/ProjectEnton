@@ -29,9 +29,9 @@ namespace ProjectEnton.Views
         public TakingPlanPage()
         {
             this.InitializeComponent();
-            
+
             /// Add todays date (with the days name) to the view
-            /// 
+            /// author: Florian Schnyder
             TodaysDate.Text = DateTime.Now.ToString("dddd, dd.MM.yyy");
 
             ///For binding tests!!!! generates drug lists object and add an item
@@ -58,7 +58,12 @@ namespace ProjectEnton.Views
                      
         }
 
-        // The for following methods are handling a click on a specified item in a listview and foward the user to the drug detail page
+        /// <summary>
+        /// The for following methods are handling a click on a specified item in a listview and foward the user to the drug detail page
+        /// author: Florian Schnyder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void morningListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             getToDurgDetailPage(e);
@@ -79,9 +84,10 @@ namespace ProjectEnton.Views
             getToDurgDetailPage(e);
         }
 
-        
+
         /// <summary>
         /// This method moves forward to the detial view of a drug. It also provides the drug object to the detail page
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="e"></param>
         private void getToDurgDetailPage(ItemClickEventArgs e)

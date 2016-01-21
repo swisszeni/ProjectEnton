@@ -18,6 +18,7 @@ namespace ProjectEnton.ViewModels
 
         /// <summary>
         /// The constructor saves the given drug in a local variable
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="drug"></param>
         public DrugDetailsModel(Drug drug)
@@ -29,6 +30,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// this block is responsible for the connection between the view and the result list
         /// The interface checks if the drug detail page needs to be updated.
+        /// author: Florian Schnyder
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -44,6 +46,7 @@ namespace ProjectEnton.ViewModels
         /// For all blocks below
         /// get: Return the selected value of a drug. 
         /// set: If the value is equal, no changes will be done. Otherwise the new value will be stored
+        /// author: Florian Schnyder
         /// </summary>
         public string Name
         {

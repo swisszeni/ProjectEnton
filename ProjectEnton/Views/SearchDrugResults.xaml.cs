@@ -22,11 +22,13 @@ namespace ProjectEnton.Views
 {
     /// <summary>
     /// This page shows all drugs that matcht with the user input entered on page "SearchDrug"
+    /// author: Florian Schnyder
     /// </summary>
     public sealed partial class SearchDrugResults : Page
     {
         /// <summary>
-        /// The constructor binds the DataContext with the "SearchDrugResultsModel" class 
+        /// The constructor binds the DataContext with the "SearchDrugResultsModel" class
+        /// author: Florian Schnyder
         /// </summary>
         public SearchDrugResults()
         {
@@ -35,6 +37,7 @@ namespace ProjectEnton.Views
 
         /// <summary>
         /// Override the OnNaviagtedTo and checks if a drug object has been sent. If yes, enable data binding between the view and the drug model.
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -48,6 +51,7 @@ namespace ProjectEnton.Views
 
         /// <summary>
         /// Cancel the request for a new drug and navigate back to the "SearchDrug" page
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

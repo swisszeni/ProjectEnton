@@ -15,9 +15,10 @@ namespace ProjectEnton.Models
     {
         public string uri { get; set; }
         public string uuid { get; set; }
-        
+
         /// <summary>
         /// This constructor can add a new image to the project
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="image"></param>
         public Picture(Image image)
@@ -27,6 +28,7 @@ namespace ProjectEnton.Models
 
         /// <summary>
         /// This constructor creates an object with an already existing uri and uuid
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="uri">contains the path where the picture is stored</param>
         /// <param name="uuid">contains an Universally Unique Identifier</param>

@@ -37,6 +37,7 @@ namespace ProjectEnton.Models
 
         /// <summary>
         /// Empty constructor
+        /// author: Florian Schnyder
         /// </summary>
         public TakingPlan()
         {
@@ -44,6 +45,7 @@ namespace ProjectEnton.Models
         }
         /// <summary>
         /// Creates an object that contains a list with all planned takings for a drug, based on the start- and endtime and the day times where the drug needs to be taken
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="drug">Contanis the drug object for which the taking plan has been created</param>
         /// <param name="takingStart">Startpoint for drug reminder</param>

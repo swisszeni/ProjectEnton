@@ -17,6 +17,7 @@ namespace ProjectEnton.ViewModels
 
         /// <summary>
         /// The constructor saves a list for each daytimes takings into local variables. It gets the drug variable out of each taking plan list.
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="morning"></param>
         /// <param name="noon"></param>
@@ -34,6 +35,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// this block is responsible for the connection between the view and the lists
         /// The interface informs the view that there has been a change in the different views
+        /// author: Florian Schnyder
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,6 +50,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// get: Return the current list. 
         /// set: If the list is equal, no changes will be done. Otherwise the new list will be saved
+        /// author: Florian Schnyder
         /// </summary>
         public List<Drug> Morning
         {

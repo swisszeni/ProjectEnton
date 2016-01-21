@@ -19,6 +19,7 @@ namespace ProjectEnton.ViewModels
 
         /// <summary>
         /// The constructor saves the given list of drugs in a local variable
+        /// author: Florian Schnyder
         /// </summary>
         /// <param name="drugs"></param>
         public DrugOverviewModel(List<Drug> drugs)
@@ -29,6 +30,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// this block is responsible for the connection between the view and the result list
         /// The interface informs the view that a new search was done and that the "DrugOverview" ListView needs to be updated
+        /// author: Florian Schnyder
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -43,6 +45,7 @@ namespace ProjectEnton.ViewModels
         /// <summary>
         /// get: Return the current list. 
         /// set: If the list is equal, no changes will be done. Otherwise the new list will be saved
+        /// author: Florian Schnyder
         /// </summary>
         public List<Drug> AllTakenDrugs
         {

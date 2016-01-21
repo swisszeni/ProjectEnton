@@ -135,6 +135,7 @@ namespace ProjectEnton.Views
 
             /// <summary>
             /// If the new entered time is within the given range, it will be saved. If not, a popup informs the user that the time entered is not allowed and the previous time won't change.
+            /// author: Florian Schnyder
             /// </summary>
             if (LunchTimePicker.Time < minTime || LunchTimePicker.Time > maxTime)
             {
@@ -162,6 +163,7 @@ namespace ProjectEnton.Views
 
             /// <summary>
             /// If the new entered time is within the given range, it will be saved. If not, a popup informs the user that the time entered is not allowed and the previous time won't change.
+            /// author: Florian Schnyder
             /// </summary>
             if (EveningTimePicker.Time < minTime || EveningTimePicker.Time > maxTime)
             {
@@ -189,6 +191,7 @@ namespace ProjectEnton.Views
 
             /// <summary>
             /// If the new entered time is within the given range, it will be saved. If not, a popup informs the user that the time entered is not allowed and the previous time won't change.
+            /// author: Florian Schnyder
             /// </summary>
             if ((NightTimePicker.Time < minTime && NightTimePicker.Time > maxTime) || (NightTimePicker.Time > maxTime && NightTimePicker.Time < minTime))
             {
