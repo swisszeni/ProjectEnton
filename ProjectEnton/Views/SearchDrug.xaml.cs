@@ -97,12 +97,13 @@ namespace ProjectEnton.Views
             }
         }
 
-        private void InitiateBarcodescanButton_Click(object sender, RoutedEventArgs e)
+        private async void InitiateBarcodescanButton_Click(object sender, RoutedEventArgs e)
         {
             SolidColorBrush semitransBrush = new SolidColorBrush(Color.FromArgb(200, 0, 0, 0));
             CameraOverlay.Background = semitransBrush;
             CameraOverlay.Visibility = Visibility.Visible;
-            InitializeCameraAsync();
+            await InitializeCameraAsync();
+            ScanBarCode();
         }
 
         private void torchButton_Click(object sender, RoutedEventArgs e)
@@ -119,7 +120,7 @@ namespace ProjectEnton.Views
 
         #region CameraStream
 
-        private async void InitializeCameraAsync()
+        private async Task InitializeCameraAsync()
         {
             if (_mediaCapture == null)
             {
@@ -295,7 +296,7 @@ namespace ProjectEnton.Views
 
         private async void ScanBarCode()
         {
-            var imgProp = new ImageEncodingProperties { Subtype = "BMP", Width = 380, Height = 380 };
+            var imgProp = new ImageEncodingProperties { Subtype = "BMP", Width = 450, Height = 450 };
             var bcReader = new BarcodeReader();
 
             while (exit == 0)
@@ -304,7 +305,7 @@ namespace ProjectEnton.Views
                 await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
                 stream.Seek(0);
-                var wbm = new WriteableBitmap(380, 380);
+                var wbm = new WriteableBitmap(450, 450);
                 await wbm.SetSourceAsync(stream);
                 var result = bcReader.Decode(wbm);
 
@@ -314,7 +315,7 @@ namespace ProjectEnton.Views
                     int swissmedicNr = 0;
                     try
                     {
-                        swissmedicNr = Int32.Parse(result.Text.Substring(3, 5));
+                        swissmedicNr = Int32.Parse(result.Text.Substring(3, 6));
                     }
                     catch { }
                     
