@@ -30,8 +30,8 @@ namespace ProjectEnton.Views
             /// For tests: Add some drugs to the static list of the "User" class
             /// author: Florian Schnyder
             User.takenDrugs.Add(new Drug(2, "Dafalgan", 2, "Paracetamol ", "Tablette", null));
-            User.takenDrugs.Add(new Drug(1, "Parazetamol", 1.5, "Kilo", "Tablette", new Picture("www.test.ch", "www.test.ch")));
-            TakingPlan dafalgan = new TakingPlan(User.takenDrugs[1], new DateTime(), new DateTime(), new DayTime(), null);
+            User.takenDrugs.Add(new Drug(1, "Aspirin", 1.5, "Kilo", "Tablette", new Picture("www.test.ch", "www.test.ch")));
+            // TakingPlan dafalgan = new TakingPlan(User.takenDrugs[1], new DateTime(), new DateTime(), new DayTime(), null);
 
             this.DataContext = new DrugOverviewModel(User.takenDrugs);
         }

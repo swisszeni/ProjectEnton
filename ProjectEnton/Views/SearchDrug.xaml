@@ -51,7 +51,7 @@
         <RelativePanel Grid.Row="1" Margin="20">
             <TextBlock x:Name="DescriptionText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Suchen Sie ein Medikament in der Datenbank via Name oder dem Strichcode." />
             <TextBox x:Name="DrugsearchTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Margin="0 20 0 0" PlaceholderText="Medikamentenname" RelativePanel.Below="DescriptionText"/>
-            <Button x:Name="SearchDrugButton" Content="Suchen" Click="SearchDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#008287" RelativePanel.RightOf="DrugsearchTextBox" RelativePanel.AlignTopWith="DrugsearchTextBox" Margin="20 20 0 0"/>
+            <Button x:Name="SearchDrugButton" Content="Suchen" Click="SearchDrugButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.RightOf="DrugsearchTextBox" RelativePanel.AlignTopWith="DrugsearchTextBox" Margin="20 20 0 0"/>
             <Button x:Name="InitiateBarcodescanButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Click="InitiateBarcodescanButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE722;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>

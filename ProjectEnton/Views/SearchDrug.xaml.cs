@@ -64,12 +64,11 @@ namespace ProjectEnton.Views
         public SearchDrug()
         {
             this.InitializeComponent();
-            
         }
 
 
         /// <summary>
-        /// TRemoves all entered characters from the input field
+        /// Removes all entered characters from the input field
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -85,8 +84,17 @@ namespace ProjectEnton.Views
         /// <param name="e"></param>
         private void SearchDrugButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = DatabaseStore.GetDrugsForNameSubstring(DrugsearchTextBox.Text);
-            Frame.Navigate(typeof(SearchDrugResults), result);
+            if(DrugsearchTextBox.Text == "pummeluff:enable")
+            {
+                Shell.Current.EnablePummeluffMode(true);
+            } else if(DrugsearchTextBox.Text == "pummeluff:disable")
+            {
+                Shell.Current.EnablePummeluffMode(false);
+            } else
+            {
+                var result = DatabaseStore.GetDrugsForNameSubstring(DrugsearchTextBox.Text);
+                Frame.Navigate(typeof(SearchDrugResults), result);
+            }
         }
 
         private void InitiateBarcodescanButton_Click(object sender, RoutedEventArgs e)

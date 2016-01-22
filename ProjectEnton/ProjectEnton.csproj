@@ -93,6 +93,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\pummeluff.mp3" />
     <None Include="Service References\eMediat\ProjectEnton.eMediat.DownloadArticleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -19,6 +19,7 @@ using ProjectEnton.Views;
 using ProjectEnton.Models;
 using Windows.UI.ViewManagement;
 using Windows.UI;
+using System.Threading.Tasks;
 
 namespace ProjectEnton.Views
 {
@@ -34,6 +35,10 @@ namespace ProjectEnton.Views
         private bool hasPhysicalBackButton;
         private Settings settings;
         private ApplicationTheme osTheme;
+
+        // Background Song
+        MediaElement pummeluff;
+        private bool _backgroundSongPlaying;
 
         public static Shell Current = null;
 
@@ -316,6 +321,80 @@ namespace ProjectEnton.Views
             }
 
             return color;
+        }
+
+
+        public void EnablePummeluffMode(bool enable)
+        {
+            if (enable)
+            {
+                // ITS A TRAP!!! Easteregg ;)
+                Application.Current.Resources["SystemAccentColor"] = Color.FromArgb(255, 255, 20, 147);
+
+                // Refresh the requested theme to refresh accent color
+                ElementTheme tempTheme = Settings.Instance.AppTheme;
+                if (tempTheme == ElementTheme.Default)
+                {
+                    Settings.Instance.AppTheme = osTheme == ApplicationTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+                } else
+                {
+                    Settings.Instance.AppTheme = tempTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+                }
+                Settings.Instance.AppTheme = tempTheme;
+                PlayBackgroundSong(true);
+            }
+            else
+            {
+                Application.Current.Resources["SystemAccentColor"] = Color.FromArgb(255, 0, 153, 153);
+
+                // Refresh the requested theme to refresh accent color
+                ElementTheme tempTheme = Settings.Instance.AppTheme;
+                if (tempTheme == ElementTheme.Default)
+                {
+                    Settings.Instance.AppTheme = osTheme == ApplicationTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+                }
+                else
+                {
+                    Settings.Instance.AppTheme = tempTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+                }
+                Settings.Instance.AppTheme = tempTheme;
+                PlayBackgroundSong(false);
+            }
+        }
+
+        private async Task InitBackgroundSong()
+        {
+            if (pummeluff == null)
+            {
+                pummeluff = new MediaElement();
+
+                Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+                Windows.Storage.StorageFile file = await folder.GetFileAsync("pummeluff.mp3");
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                pummeluff.SetSource(stream, file.ContentType);
+
+                pummeluff.MediaEnded += pummeluff_SongEnded;
+            }
+        }
+
+        private async void PlayBackgroundSong(bool play)
+        {
+            await InitBackgroundSong();
+            if (!play && _backgroundSongPlaying)
+            {
+                pummeluff.Stop();
+                _backgroundSongPlaying = false;
+            }
+            else if (play)
+            {
+                pummeluff.Play();
+                _backgroundSongPlaying = true;
+            }
+        }
+
+        private void pummeluff_SongEnded(object sender, RoutedEventArgs e)
+        {
+            _backgroundSongPlaying = false;
         }
 
         #region BackRequested Handlers
