@@ -59,7 +59,16 @@ namespace ProjectEnton.Models
             this.takingEnd = takingEnd;
             this.takingDayTime = takingDayTime;
             this.takingTime = takingTime;
-            
+
+            //create an XML file with the implemented method
+            XmlDocument file = createXML();
+            DateTime time = DateTime.Now.AddMinutes(1);
+
+            //add the notificaction to the operating system
+            ScheduledToastNotification noti = new ScheduledToastNotification(file, time);
+            noti.Id = drug.ToString();
+            ToastNotificationManager.CreateToastNotifier().AddToSchedule(noti); 
+
             //creates daily notifications for the drug if the flag in DayTime is set. At the moment only for one week and without checking the takingEndDate....
             if (drug != null && this.takingStart != null && this.takingStart >= DateTime.Now)
             {
